@@ -1,11 +1,11 @@
 function updateElement() {
     if (document.getElementById("saveData").innerText.length > 10){
-            let data = JSON.parse(document.getElementById("saveData").innerHTML);
-    document.getElementById("cardRng").value = data.hasOwnProperty("rng") ? data.rng.hasOwnProperty(String("cardPack_" + String(document.getElementById("selectedPack").value))) ? data.rng[String("cardPack_" + String(document.getElementById("selectedPack").value))] : 0 : 0;
-    predictCards();
-    startGame();
-    parseWeights();
-    predictBingo();
+        let data = JSON.parse(document.getElementById("saveData").innerHTML);
+        document.getElementById("cardRng").value = data.hasOwnProperty("rng") ? data.rng.hasOwnProperty(String("cardPack_" + String(document.getElementById("selectedPack").value))) ? data.rng[String("cardPack_" + String(document.getElementById("selectedPack").value))] : 0 : 0;
+        predictCards();
+        startGame();
+        parseWeights();
+        predictBingo();
     }
 }
 
