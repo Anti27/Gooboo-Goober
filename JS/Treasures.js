@@ -14,7 +14,7 @@ function startGame() {
         "miningOreGain"
     ]
 
-    const div = document.getElementById("div1");
+    const div = document.getElementById("showTreasureHere");
     while(div.firstChild){
         div.removeChild(div.firstChild);
     }
