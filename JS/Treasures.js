@@ -69,7 +69,7 @@ function outputText(text, color = 0) {
     para.style.fontFamily = "Araboto";
     const node = document.createTextNode(text);
     para.appendChild(node);
-    const element = document.getElementById("div1");
+    const element = document.getElementById("showTreasureHere");
     element.appendChild(para);
 }
 
