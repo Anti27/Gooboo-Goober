@@ -61,7 +61,7 @@ function startGame() {
             }
         })
 
-        let nextGl
+        let nextGl = null
         
         for (let currentGL = myGlobalLevel; currentGL < amountLvl + currentGL; currentGL++) { 
             tierChancesRawTest(currentGL).forEach(elem => {
