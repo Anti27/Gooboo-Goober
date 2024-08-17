@@ -1,41 +1,12 @@
 function updateElement() {
-  const option = document.getElementById("predict");
-  if (option.value == "card") {
     try {
-        let daeta = JSON.parse(document.getElementById("saveData").innerHTML);
-        document.getElementById("cardRng").value = daeta.hasOwnProperty("rng") ? daeta.rng.hasOwnProperty(String("cardPack_" + String(document.getElementById("selectedPack").value))) ? daeta.rng[String("cardPack_" + String(document.getElementById("selectedPack").value))] : 0 : 0;
+        let data = JSON.parse(document.getElementById("saveData").innerHTML);
+        document.getElementById("cardRng").value = data.hasOwnProperty("rng") ? data.rng.hasOwnProperty(String("cardPack_" + String(document.getElementById("selectedPack").value))) ? data.rng[String("cardPack_" + String(document.getElementById("selectedPack").value))] : 0 : 0;
     }
-    catch { document.getElementById("cardRng").value = 0; }
-    document.getElementById("treasureRng").style.display = "none";
-    document.getElementById("tierRng").style.display = "none";
-    document.getElementById("bingoPredictor").style.display = "none";
-    document.getElementById("div1").style.display = "block";
-    document.getElementById("packLabel").style.display = "inline";
-    document.getElementById("selectedPack").style.display = "inline";
-    document.getElementById("cardRng").style.display = "inline";
     predictCards();
-  }
-  if (option.value == "treasure") {
     startGame();
-    document.getElementById("treasureRng").style.display = "inline";
-    document.getElementById("tierRng").style.display = "inline";
-    document.getElementById("cardRng").style.display = "none";
-    document.getElementById("div1").style.display = "block";
-    document.getElementById("packLabel").style.display = "none";
-    document.getElementById("bingoPredictor").style.display = "none";
-    document.getElementById("selectedPack").style.display = "none";
-  }
-  if (option.value == "bingo") {
     parseWeights();
     predictBingo();
-    document.getElementById("treasureRng").style.display = "none";
-    document.getElementById("tierRng").style.display = "none";
-    document.getElementById("bingoPredictor").style.display = "inline";
-    document.getElementById("cardRng").style.display = "none";
-    document.getElementById("packLabel").style.display = "none";
-    document.getElementById("selectedPack").style.display = "none";
-    document.getElementById("div1").style.display = "none";
-  }
 }
 
 function inputFile() {
