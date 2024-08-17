@@ -32,6 +32,7 @@ function outputTextCards(text, color = 0) {
     -1px -1px 1px black, 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, \
     1px 0px 1px black, 0px 1px 1px black, -1px 0px 1px black, 0px -1px 1px black, \
     1px 0px 2px black, 0px 1px 2px black, -1px 0px 2px black, 0px -1px 2px black";
+    para.style.margin = "0";
     para.style.fontSize = "19px";
     para.style.fontFamily = "Araboto";
     const node = document.createTextNode(text);
