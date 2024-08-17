@@ -61,6 +61,8 @@ function startGame() {
             }
         })
 
+        let nextGl
+        
         for (let currentGL = myGlobalLevel; currentGL < amountLvl + currentGL; currentGL++) { 
             tierChancesRawTest(currentGL).forEach(elem => {
                 totalChance += elem.chance;
@@ -72,6 +74,7 @@ function startGame() {
                 {
                     continue;
                 } else {
+                    nextGL = currentGL
                     break;
                 }
         }
@@ -79,7 +82,7 @@ function startGame() {
         // Treasure Type + Output
         var treasureRng = typeof parseInt(document.getElementById('treasureRng').value) === "number" ? document.getElementById('treasureRng').value : 0;
         let rngGen = new Math.seedrandom(document.getElementById('playerID').value + "treasure_regular" + '_' + (parseInt(treasureRng) + i));
-        outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + " " + newtier + ", " + randomElem(iconList, rngGen())), tier);
+        outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + ", " + randomElem(iconList, rngGen())) + ", " + nextGL, tier);
     }
 }
 function outputText(text, color = 0) {
@@ -153,7 +156,7 @@ function tierChancesRawTest(gl) {
     let tier = 0;
     let totalChance = 0;
 
-    const upgradeChances = tierChances(gl);
+    const upgradeChances = tierChancesTest(gl);
 
     if (upgradeChances.length <= 0) {
         return [{tier: 0, chance: 1}];
@@ -173,7 +176,7 @@ function tierChancesRawTest(gl) {
     return arr;
 }
 
-function tierChances(gl) {
+function tierChancesTest(gl) {
     let chances = [];
     let chanceValue = gl / 1000;
 
