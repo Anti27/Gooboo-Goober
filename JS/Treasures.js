@@ -20,7 +20,7 @@ function startGame() {
     }
 
     let amount = document.getElementById("treasureAmount").value;
-    if (amount < 1 && amount > 1000000) {amount = 10}
+    if (amount < 1 && amount > 10000) {amount = 20}
 
     var save = JSON.parse(document.getElementById("saveData").innerHTML);
     var unlocks = save.unlock;
@@ -59,6 +59,7 @@ function startGame() {
         var treasureRng = typeof parseInt(document.getElementById('treasureRng').value) === "number" ? document.getElementById('treasureRng').value : 0;
         let rngGen = new Math.seedrandom(document.getElementById('playerID').value + "treasure_regular" + '_' + (parseInt(treasureRng) + i));
         outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + ", " + randomElem(iconList, rngGen())), tier);
+        debugger;
     }
 }
 function outputText(text, color = 0) {
