@@ -38,6 +38,11 @@
 <head bgcolor="black">
     <title>Gooboo Goober</title>
     <span>
+        <span>
+            <input type="file" id="myFile" name="Save File" oninput="inputFile()" style="color: #FFFFFF;"></input>
+            <button onclick="unlockFile()" hidden="True" id="button:D">Unlock File Input</button>
+        </span>
+        <br>
         <label for="predict" style="color: #FFFFFF;">What to predict:</label>
         <select name="predict" id="predict" onchange="updateElement()">
             <option value="treasure">Treasures</option>
@@ -69,11 +74,6 @@
             <option value="newArtist">New Artist</option>
             <option value="inspiringCreations">Inspiring Creations</option>
         </select>
-    </span>
-    <br>
-    <span>
-        <input type="file" id="myFile" name="Save File" oninput="inputFile()" style="color: #FFFFFF;"></input>
-        <button onclick="unlockFile()" hidden="True" id="button:D">Unlock File Input</button>
     </span>
     <br>
     <span>
@@ -129,6 +129,7 @@
     <script src="./JS/Cards.js"></script>
     <script src="./JS/Treasures.js"></script>
     <script src="./JS/Bingo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
