@@ -70,6 +70,10 @@ function startGame() {
                 totalChanceTmp += elem.chance;
                 if ((newtier === null || tier < elem.tier) && chance(totalChance, nextChance)) {
                     newtier = elem.tier;
+                    if (tier < elem.tier){
+                        nextGL = currentGL
+                        break;
+                    }
                 }
             })
             if (tier >= newtier)
