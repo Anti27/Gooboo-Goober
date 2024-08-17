@@ -175,8 +175,7 @@ function tierChancesRawTest(gl) {
 
 function tierChances(gl) {
     let chances = [];
-    var globalLevel = gl;
-    let chanceValue = globalLevel / 1000;
+    let chanceValue = gl / 1000;
 
     while (chanceValue > 0) {
         chances.push(chanceValue);
