@@ -38,3 +38,4 @@ function outputTextCards(text, color = 0) {
     para.appendChild(node);
     const element = document.getElementById("showCardsHere");
     element.appendChild(para);
+}
