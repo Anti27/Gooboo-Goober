@@ -81,5 +81,8 @@ function openElement(evt, featureName) {
   document.getElementById(featureName).style.display = "block";
   evt.currentTarget.className += " active";
 
-  updateElement()
+    if (document.getElementById("saveData").innerText.length > 10){
+        updateElement()
+    }
+  
 } 
