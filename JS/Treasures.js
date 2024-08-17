@@ -84,7 +84,7 @@ function startGame() {
         if (nextGL == null){
             outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + ", " + randomElem(iconList, rngGen())), tier);
         }else{
-            outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + ", " + randomElem(iconList, rngGen())) + ", " + nextGL, tier);
+            outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + ", " + randomElem(iconList, rngGen())) + ", Next Tier at GL" + nextGL, tier);
         }
         
         
