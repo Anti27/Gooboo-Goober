@@ -75,7 +75,7 @@ function startGame() {
             if (tier >= newtier)
                 {
                     newtier = null;
-                    let totalChanceTmp = 0;
+                    totalChanceTmp = 0;
                     continue;
                 } else {
                     nextGL = currentGL
