@@ -98,11 +98,11 @@
         <input type="file" id="myFile" name="Save File" oninput="inputFile()" style="color: #FFFFFF;"></input>
         <button onclick="unlockFile()" hidden="True" id="button:D">Unlock File Input</button>
     </div>
-    <div id="treasures" class="tabcontent">
+    <div id="treasures" class="tabcontent" style="color:#FFF;">
         
     </div>
     <div id="cards" class="tabcontent">
-        <label for="packs" hidden="True" id="packLabel" style="color: #FFFFFF;">What pack to predict:</label>
+        <label for="packs" id="packLabel" style="color: #FFFFFF;">What pack to predict:</label>
         <select name="packs" id="selectedPack" onchange="updateElement()" hidden="True">
             <!-- Mining -->
             <option value="intoDarkness">Into Darkness</option>
@@ -127,6 +127,10 @@
             <option value="newArtist">New Artist</option>
             <option value="inspiringCreations">Inspiring Creations</option>
         </select>
+        Amount:
+        <input type="number" id="cardRng" style="width: 70px; font-family: monospace; padding-right: 0,2rem;" oninput="updateElement()"></input>
+        <button onclick="openElement(event, 'treasures')">Update</button>
+        <div id="showCardsHere"></div>
     </div>
     <div id="bingo" class="tabcontent">
         <div class="grid-container">
