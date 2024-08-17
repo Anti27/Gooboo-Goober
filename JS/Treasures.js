@@ -68,7 +68,7 @@ function startGame() {
         for (let currentGL = parseInt(myGlobalLevel); currentGL < maxLoop; currentGL++) { 
             tierChancesRawTest(currentGL).forEach(elem => {
                 totalChanceTmp += elem.chance;
-                if (newtier === null && chance(totalChance, nextChance)) {
+                if (newtier === null && chance(totalChanceTmp, nextChance)) {
                     newtier = elem.tier;
                     console.log(currentGL + " :" + newtier)
                 }
