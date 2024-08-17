@@ -82,9 +82,20 @@
         <button class="tablinks" onclick="openElement(event, 'bingo2')">Bingo2</button>
         <button class="tablinks" onclick="openElement(event, 'test')">Test</button>
     </div>
+    <div>
+        <p>Debug Data:</p>
+        <input type="text" id="playerID" maxlength="16" oninput="updateElement()" style="font-family: monospace;" title="hi"></input>
+        <input type="number" id="GL" style="width: 44px; font-family: monospace;" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); updateElement()" maxlength="4"></input>
+        <input type="number" id="treasureRng" style="width: 70px; font-family: monospace;" oninput="updateElement()"></input>
+        <input type="number" id="tierRng" style="width: 70px; font-family: monospace;" oninput="updateElement()"></input>
+        <input type="number" id="cardRng" style="width: 70px; font-family: monospace;" oninput="updateElement()"></input>
+    </div>    
     <div id="save" class="tabcontent">
         <input type="file" id="myFile" name="Save File" oninput="inputFile()" style="color: #FFFFFF;"></input>
         <button onclick="unlockFile()" hidden="True" id="button:D">Unlock File Input</button>
+    </div>
+    <div id="treasures" class="tabcontent">
+        
     </div>
     <div id="cards" class="tabcontent">
         <label for="packs" hidden="True" id="packLabel" style="color: #FFFFFF;">What pack to predict:</label>
@@ -112,15 +123,6 @@
             <option value="newArtist">New Artist</option>
             <option value="inspiringCreations">Inspiring Creations</option>
         </select>
-        <span>
-            <input type="text" id="playerID" maxlength="16" oninput="updateElement()" style="font-family: monospace;" title="hi"></input>
-            <input type="number" id="GL" style="width: 44px; font-family: monospace;" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); updateElement()" maxlength="4"></input>
-            <input type="number" id="treasureRng" style="width: 70px; font-family: monospace;"
-                oninput="updateElement()"></input>
-            <input type="number" id="tierRng" style="width: 70px; font-family: monospace;" oninput="updateElement()"></input>
-            <input type="number" id="cardRng" style="width: 70px; font-family: monospace;" oninput="updateElement()"></input>
-            <button onclick="updateElement()">Predict</button>
-        </span>
     </div>
     <div id="bingo" class="tabcontent">
         <div class="grid-container">
