@@ -72,7 +72,7 @@
 <head bgcolor="black">
     <title>Gooboo Goober</title>
     <div class="tab">
-        <button class="tablinks" onclick="openElement(event, 'save') id='openMe' ">Save File</button>
+        <button class="tablinks active" onclick="openElement(event, 'save') id='openMe' ">Save File</button>
         <button class="tablinks" onclick="openElement(event, 'treasures')">Treasures</button>
         <button class="tablinks" onclick="openElement(event, 'cards')">Cards</button>
         <button class="tablinks" onclick="openElement(event, 'bingo')">Bingo</button>
@@ -164,7 +164,7 @@
     <script src="./JS/Bingo.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("openMe").click()
+            console.log("test");
         });
     </script>
 
