@@ -1,6 +1,6 @@
 let colors = ['white', 'yellow', 'orange', 'red', 'pink', 'purple', 'indigo', 'blue', 'teal', 'green', 'light-green', 'lime', '#FFC107', 'orange-red', 'red-pink', 'pink-purple', 'dark-blue', 'light-blue', 'cyan']
 function startGame() {
-    //let rngGen = rootGetters['system/getRng']('treasure_' + type, rngSkip);
+    
     let chosenEffect = [];
     iconList = [
         'mdi-star', 'mdi-hexagram', 'mdi-star-four-points', 'mdi-star-three-points', 'mdi-lightning-bolt',
@@ -18,6 +18,9 @@ function startGame() {
     while(div.firstChild){
         div.removeChild(div.firstChild);
     }
+
+    let amount = document.getElementById("treasureAmount").value;
+    if (amount < 1 && amount > 1000000) {amount = 10}
 
     var save = JSON.parse(document.getElementById("saveData").innerHTML);
     var unlocks = save.unlock;
@@ -38,7 +41,7 @@ function startGame() {
     "galleryConversion" in unlocks ? effectList.push("currencyGalleryConverterGain") : null;
     "galleryDrums" in unlocks ? effectList.push("currencyGalleryPackageGain") : null;
 
-    for(let i = 0; i < 99; i++) {
+    for(let i = 0; i < amount; i++) {
         // Tier Rolling
         var tierRng = typeof parseInt(document.getElementById('tierRng').value) === "number" ? document.getElementById('tierRng').value : 0;
         let tierGen = new Math.seedrandom(document.getElementById('playerID').value + "treasureTier_regular" + '_' + (parseInt(tierRng) + i));
