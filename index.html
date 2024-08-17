@@ -99,6 +99,8 @@
         <button onclick="unlockFile()" hidden="True" id="button:D">Unlock File Input</button>
     </div>
     <div id="treasures" class="tabcontent" style="color:#FFF;">
+        Amount:
+        <input type="number" value=100 id="treasureAmount" style="width: 70px; font-family: monospace; padding-right: 0,2rem;" oninput="updateElement()"></input>
         <button onclick="startGame()">Update</button>
         <div id="showTreasureHere"></div>
     </div>
