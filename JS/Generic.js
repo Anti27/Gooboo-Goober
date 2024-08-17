@@ -6,7 +6,7 @@ function updateElement() {
         startGame();
         parseWeights();
         predictBingo();
-    }
+    } else {console.log("No Data")}
 }
 
 function inputFile() {
@@ -70,18 +70,18 @@ function weightSelect(weights, rng = Math.random()) {
 function openElement(evt, featureName) {
   var i, tabcontent, tablinks;
 
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  document.getElementById(featureName).style.display = "block";
-  evt.currentTarget.className += " active";
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
     
-  updateElement()  
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    
+    document.getElementById(featureName).style.display = "block";
+    evt.currentTarget.className += " active";
+    
+    updateElement()  
 } 
