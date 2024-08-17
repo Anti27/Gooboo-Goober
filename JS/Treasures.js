@@ -62,7 +62,7 @@ function startGame() {
             }
         })
 
-        for (let currentGL = myGlobalLevel; currentGL > (amountLvl + currentGL); currentGL++) { 
+        for (let currentGL = myGlobalLevel; currentGL > (amountLvl + myGlobalLevel); currentGL++) { 
             tierChancesRawTest(currentGL).forEach(elem => {
                 totalChance += elem.chance;
                 if (newtier === null && chance(totalChance, nextChance)) {
