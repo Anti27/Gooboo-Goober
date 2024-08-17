@@ -1,5 +1,7 @@
 let colors = ['white', 'yellow', 'orange', 'red', 'pink', 'purple', 'indigo', 'blue', 'teal', 'green', 'light-green', 'lime', '#FFC107', 'orange-red', 'red-pink', 'pink-purple', 'dark-blue', 'light-blue', 'cyan']
 function startGame() {
+
+    let myGlobalLevel = typeof parseInt(document.getElementById('GL').value) === "number" ? document.getElementById('GL').value : 200;
     
     let chosenEffect = [];
     iconList = [
@@ -20,6 +22,9 @@ function startGame() {
     }
 
     let amount = document.getElementById("treasureAmount").value;
+    if (amount < 1 && amount > 10000) {amount = 20}
+
+    let amountLvl = document.getElementById("treasureLevelAmount").value;
     if (amount < 1 && amount > 10000) {amount = 20}
 
     var save = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -47,6 +52,7 @@ function startGame() {
         let tierGen = new Math.seedrandom(document.getElementById('playerID').value + "treasureTier_regular" + '_' + (parseInt(tierRng) + i));
         const nextChance = tierGen()
         let tier = null;
+        let newtier = null;
         let totalChance = 0;
         tierChancesRaw().forEach(elem => {
             totalChance += elem.chance;
@@ -55,10 +61,25 @@ function startGame() {
             }
         })
 
+        for (let currentGL = myGlobalLevel; currentGL < amountLvl + currentGL; currentGL++) { 
+            tierChancesRawTest(currentGL).forEach(elem => {
+                totalChance += elem.chance;
+                if (newtier === null && chance(totalChance, nextChance)) {
+                    newtier = elem.tier;
+                }
+            })
+            if (tier == newtier)
+                {
+                    continue;
+                } else {
+                    break;
+                }
+        }
+
         // Treasure Type + Output
         var treasureRng = typeof parseInt(document.getElementById('treasureRng').value) === "number" ? document.getElementById('treasureRng').value : 0;
         let rngGen = new Math.seedrandom(document.getElementById('playerID').value + "treasure_regular" + '_' + (parseInt(treasureRng) + i));
-        outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + ", " + randomElem(iconList, rngGen())), tier);
+        outputText((i + 1) + ". " + String(randomElem(effectList, rngGen()) + " " + newtier + ", " + randomElem(iconList, rngGen())), tier);
     }
 }
 function outputText(text, color = 0) {
@@ -82,6 +103,7 @@ function randomElem(array, rng = Math.random()) {
 function randomInt(min, max, rng = Math.random()) {
     return Math.floor(rng * (1 + max - min) + min);
 }
+
 function tierChances() {
     let chances = [];
     var globalLevel = typeof parseInt(document.getElementById('GL').value) === "number" ? document.getElementById('GL').value : 200;
@@ -96,9 +118,11 @@ function tierChances() {
 
     return chances;
 }
+
 function chance(chance, rng = Math.random()) {
     return rng < chance;
 }
+
 function tierChancesRaw() {
     let arr = [];
     let tier = 0;
@@ -122,4 +146,44 @@ function tierChancesRaw() {
         }
     });
     return arr;
+}
+
+function tierChancesRawTest(gl) {
+    let arr = [];
+    let tier = 0;
+    let totalChance = 0;
+
+    const upgradeChances = tierChances(gl);
+
+    if (upgradeChances.length <= 0) {
+        return [{tier: 0, chance: 1}];
+    }
+
+    upgradeChances.forEach((elem, key) => {
+        if (elem < 1) {
+            const chance = (1 - totalChance) * (1 - elem)
+            arr.push({tier, chance});
+            totalChance += chance;
+        }
+        tier++;
+        if ((key + 1) >= upgradeChances.length) {
+            arr.push({tier, chance: (1 - totalChance)});
+        }
+    });
+    return arr;
+}
+
+function tierChances(gl) {
+    let chances = [];
+    var globalLevel = gl;
+    let chanceValue = globalLevel / 1000;
+
+    while (chanceValue > 0) {
+        chances.push(chanceValue);
+
+        chanceValue *= 0.9;
+        chanceValue -= 0.2;
+    }
+
+    return chances;
 }
