@@ -69,7 +69,7 @@ function startGame() {
                     newtier = elem.tier;
                 }
             })
-            if (tier == newtier)
+            if (tier < newtier)
                 {
                     continue;
                 } else {
