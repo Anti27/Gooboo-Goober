@@ -1,7 +1,7 @@
 let cardStuff = getCardData();
 
 function predictCards() {
-    const div = document.getElementById("div1");
+    const div = document.getElementById("showCardsHere");
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
     while(div.firstChild) { div.removeChild(div.firstChild); }
     let selectedPack = document.getElementById("selectedPack").value;
