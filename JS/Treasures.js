@@ -73,6 +73,7 @@ function startGame() {
             })
             if (tier >= newtier)
                 {
+                    newtier = null
                     continue;
                 } else {
                     nextGL = currentGL
