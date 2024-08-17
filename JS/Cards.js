@@ -10,7 +10,7 @@ function predictCards() {
     let pack = cardStuff.packs[selectedPack]
     var prog = typeof parseInt(document.getElementById('cardRng').value) === "number" ? document.getElementById('cardRng').value : 0;
     for (let i = 0; i < amount; i++) {
-        outputText("------  " + (i + 1) + "  ------")
+        outputTextCards("------  " + (i + 1) + "  ------")
         let rngGen = new Math.seedrandom(document.getElementById('playerID').value + "cardPack_" + String(selectedPack) + "_" + (parseInt(prog) + i));
         let cacheWeight = [];
         let cacheContent = [];
@@ -20,7 +20,21 @@ function predictCards() {
         }
         for (let j = 0, m = pack.amount; j < m; j++) { 
             let card = cacheContent[weightSelect(cacheWeight, rngGen())];
-            outputText((dict.card.card.hasOwnProperty(String(card)) ? "" : "(New!) ") + cardStuff.names[card]);
+            outputTextCards((dict.card.card.hasOwnProperty(String(card)) ? "" : "(New!) ") + cardStuff.names[card]);
         }
     }
 }
+
+function outputTextCards(text, color = 0) {
+    const para = document.createElement("p");
+    para.style.color = colors[color];
+    para.style.textShadow = "-1px -1px 2px black, 1px 1px 2px black, 1px -1px 2px black, -1px 1px 2px black, \
+    -1px -1px 1px black, 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, \
+    1px 0px 1px black, 0px 1px 1px black, -1px 0px 1px black, 0px -1px 1px black, \
+    1px 0px 2px black, 0px 1px 2px black, -1px 0px 2px black, 0px -1px 2px black";
+    para.style.fontSize = "19px";
+    para.style.fontFamily = "Araboto";
+    const node = document.createTextNode(text);
+    para.appendChild(node);
+    const element = document.getElementById("showCardsHere");
+    element.appendChild(para);
