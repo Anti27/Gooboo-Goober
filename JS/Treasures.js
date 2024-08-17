@@ -53,7 +53,7 @@ function startGame() {
         const nextChance = tierGen()
         let tier = null;
         let newtier = null;
-        let nextGl = null
+        let nextGL = null
         let totalChance = 0;
         tierChancesRaw().forEach(elem => {
             totalChance += elem.chance;
