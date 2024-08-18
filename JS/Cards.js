@@ -42,7 +42,7 @@ function predictCards() {
             if (info[j][i] !== undefined) {
                 innerHtml += "<th>" + info[j][i] + "</th>";
             } else {
-                innerHtml += "<th>" + - + "</th>";
+                innerHtml += "<th>-</th>";
             }
         }
         innerHtml += "</tr>";
