@@ -9,7 +9,7 @@ function predictCards() {
     while(div.firstChild) { div.removeChild(div.firstChild); }
     let selectedPack = document.getElementById("selectedPack").value;
     let pack = cardStuff.packs[selectedPack]
-    let innerHtml = "<table><tr><th>" + selectedPack + "</th>";
+    let innerHtml = "<br><table><tr><th>" + selectedPack + "</th>";
     for (const [keyx, elemx] of Object.entries(pack.content)) {
         innerHtml += "<th>" + keyx + "<br>" + cardStuff.names[keyx] + "</th>"
     }
@@ -28,7 +28,7 @@ function predictCards() {
             outputTextCards((dict.card.card.hasOwnProperty(String(card)) ? "" : "(New!) ") + cardStuff.names[card]);
         }
     }
-    innerHtml += "</table>";
+    innerHtml += "</table><br>";
     aggregate.innerHTML = innerHtml;
 }
 
