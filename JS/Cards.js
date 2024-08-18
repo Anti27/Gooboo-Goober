@@ -40,7 +40,7 @@ function predictCards() {
         innerHtml += "<tr><th>" + row + "</th>";
         for (let j = 0; j < info.length; j++){
             if (info[j][i] !== undefined) {
-                innerHtml += "<th>" + info[j][i] + "</th>";
+                innerHtml += "<th>In " + info[j][i] + ", Cost" + info[j][i]*pack.price + "Eme.</th>";
             } else {
                 innerHtml += "<th>-</th>";
             }
