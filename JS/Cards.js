@@ -27,6 +27,8 @@ function predictCards() {
         }
         for (let j = 0, m = pack.amount; j < m; j++) { 
             let card = cacheContent[weightSelect(cacheWeight, rngGen())];
+            let index = cacheContent.indexOf(card)
+            info[index].push(i + 1)
             outputTextCards((dict.card.card.hasOwnProperty(String(card)) ? "" : "(New!) ") + cardStuff.names[card]);
         }
     }
