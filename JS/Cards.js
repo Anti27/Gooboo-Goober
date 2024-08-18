@@ -2,12 +2,17 @@ let cardStuff = getCardData();
 
 function predictCards() {
     const div = document.getElementById("showCardsHere");
+    let aggregate = document.getElementById("aggregateCardsHere");
     let amount = document.getElementById("cardAmount").value;
     if (amount < 1 && amount > 1000000) {amount = 10}
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
     while(div.firstChild) { div.removeChild(div.firstChild); }
     let selectedPack = document.getElementById("selectedPack").value;
     let pack = cardStuff.packs[selectedPack]
+    let innerHtml = "<table><tr><th>" + selectedPack + "</th>";
+    for (const [keyx, elemx] of Object.entries(pack.content)) {
+        innerHtml += "<th>" + keyx + "<br>" + cardStuff.names[keyx] + "</th>"
+    }
     var prog = typeof parseInt(document.getElementById('cardRng').value) === "number" ? document.getElementById('cardRng').value : 0;
     for (let i = 0; i < amount; i++) {
         outputTextCards("------  " + (i + 1) + "  ------")
@@ -23,6 +28,8 @@ function predictCards() {
             outputTextCards((dict.card.card.hasOwnProperty(String(card)) ? "" : "(New!) ") + cardStuff.names[card]);
         }
     }
+    innerhtml += "</table>";
+    aggregate.innerHTML = innerhtml;
 }
 
 function outputTextCards(text, color = 0) {
