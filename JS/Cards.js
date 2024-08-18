@@ -15,6 +15,7 @@ function predictCards() {
         innerHtml += "<th>" + keyx + "<br>" + cardStuff.names[keyx] + "</th>"
         info.push([])
     }
+    innerHtml += "</tr>";
     var prog = typeof parseInt(document.getElementById('cardRng').value) === "number" ? document.getElementById('cardRng').value : 0;
     for (let i = 0; i < amount; i++) {
         outputTextCards("------  " + (i + 1) + "  ------")
@@ -32,6 +33,16 @@ function predictCards() {
             outputTextCards((dict.card.card.hasOwnProperty(String(card)) ? "" : "(New!) ") + cardStuff.names[card]);
         }
     }
+    let aggregateAmount = document.getElementById("aggregateAmount").value;
+    if (aggregateAmount < 1 && aggregateAmount > 1000) {aggregateAmount = 4}
+    for (let i = 0; i < aggregateAmount; i++) {
+        innerHtml += "<tr><th>" + i + "</th>";
+        for (let j = 0; j < info.length; j++){
+            innerHtml += "<th>" + j + "</th>";
+        }
+        innerHtml += "</tr>";
+    } 
+    
     innerHtml += "</table><br>";
     aggregate.innerHTML = innerHtml;
 }
