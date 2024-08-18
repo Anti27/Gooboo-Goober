@@ -28,8 +28,8 @@ function predictCards() {
             outputTextCards((dict.card.card.hasOwnProperty(String(card)) ? "" : "(New!) ") + cardStuff.names[card]);
         }
     }
-    innerhtml += "</table>";
-    aggregate.innerHTML = innerhtml;
+    innerHtml += "</table>";
+    aggregate.innerHTML = innerHtml;
 }
 
 function outputTextCards(text, color = 0) {
