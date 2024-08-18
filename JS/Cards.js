@@ -36,9 +36,14 @@ function predictCards() {
     let aggregateAmount = document.getElementById("aggregateAmount").value;
     if (aggregateAmount < 1 && aggregateAmount > 1000) {aggregateAmount = 4}
     for (let i = 0; i < aggregateAmount; i++) {
-        innerHtml += "<tr><th>" + i + "</th>";
+        let row = i + 1
+        innerHtml += "<tr><th>" + row + "</th>";
         for (let j = 0; j < info.length; j++){
-            innerHtml += "<th>" + j + "</th>";
+            if (info[i][j] !== undefined) {
+                innerHtml += "<th>" + info[i][j] + "</th>";
+            } else {
+                innerHtml += "<th>" + - + "</th>";
+            }
         }
         innerHtml += "</tr>";
     } 
