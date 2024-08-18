@@ -10,8 +10,10 @@ function predictCards() {
     let selectedPack = document.getElementById("selectedPack").value;
     let pack = cardStuff.packs[selectedPack]
     let innerHtml = "<br><table><tr><th>" + selectedPack + "</th>";
+    let info = []
     for (const [keyx, elemx] of Object.entries(pack.content)) {
         innerHtml += "<th>" + keyx + "<br>" + cardStuff.names[keyx] + "</th>"
+        info.push([])
     }
     var prog = typeof parseInt(document.getElementById('cardRng').value) === "number" ? document.getElementById('cardRng').value : 0;
     for (let i = 0; i < amount; i++) {
