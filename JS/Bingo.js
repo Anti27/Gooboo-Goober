@@ -6,6 +6,9 @@ let tilts = [
     3, 2, 2, 2, 3
 ]
 
+var storedDraws = [];
+var groundDraws = [];
+
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
     if (dict.hasOwnProperty("event") ? dict.event.hasOwnProperty("casino_bingo_card") ? true : false : false) {
@@ -17,10 +20,19 @@ function predictBingo() {
         }
         let draws = [];
         if (dict.event.hasOwnProperty("casino_bingo_draws")) {
-            dict.event.casino_bingo_draws.forEach(i => {
-                draws.push(i);
-                card.includes(i) ? document.getElementById("grid" + (card.indexOf(i) + 1)).style.background = "green" : 0;
-            });
+            if (storedDraws.length === 0){
+                dict.event.casino_bingo_draws.forEach(i => {
+                    draws.push(i);
+                    groundDraws.push(i);
+                    storedDraws.push(i);
+                    card.includes(i) ? document.getElementById("grid" + (card.indexOf(i) + 1)).style.background = "green" : 0;
+                });
+            } else {
+                storedDraws.forEach(i => {
+                    draws.push(i);
+                    card.includes(i) ? document.getElementById("grid" + (card.indexOf(i) + 1)).style.background = "green" : 0;
+                });
+            }
         }
         let boostI = 0.0;
         let boosts = [];
@@ -73,4 +85,5 @@ function weightAdd(id) {
     document.getElementById("bingoWeights").innerHTML = array.join(", ")
     predictBingo();
 }
+
 function buildArray(length = 0) { return Array(length).fill().map((x, i) => i); }
