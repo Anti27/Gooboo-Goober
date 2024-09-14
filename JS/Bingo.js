@@ -87,3 +87,7 @@ function weightAdd(id) {
 }
 
 function buildArray(length = 0) { return Array(length).fill().map((x, i) => i); }
+
+function startSolver(){
+    alert("Working on it")
+}
