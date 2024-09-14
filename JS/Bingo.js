@@ -8,6 +8,7 @@ let tilts = [
 
 var storedDraws = [];
 var groundDraws = [];
+var nextDraws = [];
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -68,7 +69,11 @@ function predictBingo() {
             draws.push(drawnNum + 1);
             predictedDraws.push(drawnNum + 1);
         }
-        predictedDraws.forEach(i => { card.includes(i) ? document.getElementById("grid" + (card.indexOf(i) + 1)).style.background = "greenyellow" : 0; });
+        nextDraws = [];
+        predictedDraws.forEach(i => { 
+            card.includes(i) ? document.getElementById("grid" + (card.indexOf(i) + 1)).style.background = "greenyellow" : 0; 
+            nextDraws.push(i);
+        });
     }
 }
 
