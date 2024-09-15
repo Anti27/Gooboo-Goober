@@ -146,7 +146,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     let InternalRemainingCards = remainingCards(internalCard, drawsUntilNow)
     let possibleWeights = remainingCards(InternalRemainingCards, currentWeights)
     
-    for (let p = 0; p < maxWeightsLenght; p++){
+    for (let p = 0; p =< maxWeightsLenght; p++){
         if (p > currentWeights.length){
             continue;
         }
