@@ -177,8 +177,24 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             showResult[1] = structuredClone(currentWeights);
             showResult[3] = structuredClone(newInternalDraw);
         }
+        let onlyImportantDraws = remainingCards(internalCard, newInternalDraw)
+        let resultMap = structuredClone(internalCard)
+
+        for (let z = 0; z < onlyImportantDraws.length; z++){
+            let checkForHit = resultMap.indexOf(onlyImportantDraws[z])
+            if (checkForHit !== -1)
+            {resultMap[z] = 0}
+        }
+
+        for (let z = 0; z < onlyImportantDraws.length; z++){
+            if (onlyImportantDraws[z] === 0){
+                onlyImportantDraws[z] = 1;
+            } else {
+                onlyImportantDraws[z] = 0;
+            }
+        }
         
-        
+        debugger;
         
         return;
     }
