@@ -193,6 +193,9 @@ function startSolver(){
     let allPairs = [];
     for (let i = 0; i < remaining.length; i++) {
         for (let j = 0; j < remaining.length; j++) {
+            if (i < j){
+                continue;
+            }
             if (i == j){
                 allPairs.push([remaining[i]])
             }else{
