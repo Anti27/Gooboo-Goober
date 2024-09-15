@@ -12,6 +12,7 @@ var nextDraws = [];
 var automateBaseBoosts = false;
 var baseBoostsArray = [];
 var bingoCard = [];
+var showDebug = false;
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -127,7 +128,9 @@ function startSolver(){
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
-    console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
+    if (showDebug){
+        console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
+    }
     showResult[2] += 1
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber)
     if (!internalCard.some(card => predictedNextDraw.includes(card))){
