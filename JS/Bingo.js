@@ -160,9 +160,6 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, newInternalDraw, internalRngString, internalDrawNumber)
     if (!newInternalDraw.some(card => predictedNextDraw.includes(card))){
-        if (predictedNextDraw.length === 0){
-            debugger;
-        }
         return;
     }
     internalDrawNumber++
@@ -174,13 +171,13 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     }
 
     if (maxWeightsLenght >= 6){
-        let currentResult = internalCard.filter(card => drawsUntilNow.includes(card)).length;
+        let currentResult = internalCard.filter(card => drawsUntilNow.includes(card));
         if (currentResult > showResult[0]){
-            showResult[0] = currentResult;
+            showResult[0] = currentResult.length;
             showResult[1] = structuredClone(currentWeights);
             showResult[3] = structuredClone(newInternalDraw);
         }
-
+        
         
         
         return;
