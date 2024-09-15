@@ -130,12 +130,6 @@ function startSolver(){
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
-    if (showDebug){
-        console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
-    }
-    if (stopNow){
-        return;
-    }
     showResult[2] += 1
     
     if (showResult[2] === 100){
@@ -174,6 +168,11 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     internalDrawNumber++
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(newInternalDraw)
+
+    if (showDebug){
+        console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
+    }
+
     if (maxWeightsLenght >= 6){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card)).length;
         if (currentResult > showResult[0]){
@@ -181,6 +180,9 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             showResult[1] = structuredClone(currentWeights);
             showResult[3] = structuredClone(newInternalDraw);
         }
+
+        
+        
         return;
     }
     let InternalRemainingCards = remainingCards(internalCard, drawsUntilNow)
