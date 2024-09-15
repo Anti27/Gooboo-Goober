@@ -123,10 +123,9 @@ function startSolver(){
     let internalDrawNumber = (parseInt(internalDict.rng.hasOwnProperty("bingo_draw") ? internalDict.rng.bingo_draw : 0));
     
     solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
-    console.log("Max Find: " + showResult[0]);
-    console.log("Numbers: " + showResult[1]);
     console.log("Combinations: " + showResult[2]);
-    console.log("Enddraw: " + showResult[3]);
+    console.log("Max Find: " + showResult[0] + " Numbers: " + showResult[1] + " Enddraw: " + showResult[3]);
+    console.log("Count: " + showResult[4] + " Weights: " + showResult[4] + " Draw: " + showResult[4]);
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
@@ -141,7 +140,17 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(newInternalDraw)
 
-    debugHelp(showResult)
+    if (showResult[2] === 1000000){
+        debugger;
+    }
+    
+    if (showResult[2] === 5000000){
+        debugger;
+    }
+
+    if (showResult[2] === 10000000){
+        debugger;
+    }
     
     if (maxWeightsLenght >= 8){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card));
@@ -186,6 +195,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
         if (bingoCount > showResult[4]){
             showResult[4] = bingoCount;
             showResult[5] = structuredClone(currentWeights);
+            showResult[6] = structuredClone(newInternalDraw);
         }
         
         return;
@@ -274,30 +284,4 @@ function efficientPredictBingo(currentWeights, internalCard, internalDraw, inter
         predictedDraws.push(drawnNum + 1);
     }
     return predictedDraws;
-}
-
-function debugHelp(showResult){
-    if (showDebug){
-        console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
-    }
-    
-    if (showResult[2] === 10000){
-        debugger;
-    }
-    
-    if (showResult[2] === 100000){
-        debugger;
-    }
-    
-    if (showResult[2] === 1000000){
-        debugger;
-    }
-    
-    if (showResult[2] === 5000000){
-        debugger;
-    }
-
-    if (showResult[2] === 10000000){
-        debugger;
-    }
 }
