@@ -149,7 +149,6 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     }
     let InternalRemainingCards = remainingCards(internalCard, drawsUntilNow)
     let possibleWeights = remainingCards(InternalRemainingCards, currentWeights)
-    let allPossibleWeights = []
     
     for (let p = 0; p < maxWeightsLenght; p++){
         if (p > currentWeights.length){
@@ -162,6 +161,11 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
                     solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
                     break;
                 case 1:
+                    possibleWeights.forEach(i => {
+                        let nextWeights = structuredClone(currentWeights)
+                        nextWeights.push(i)
+                        solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
+                    })
                     break;
                 case 2:
                     break;
