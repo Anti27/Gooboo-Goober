@@ -12,8 +12,6 @@ var nextDraws = [];
 var automateBaseBoosts = false;
 var baseBoostsArray = [];
 var bingoCard = [];
-var drawNumber = 0
-var rngString = "";
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -75,10 +73,6 @@ function predictBingo() {
         else if (draws.length >= 12) { drawGoal = 17; }
 
         let predictedDraws = [];
-        
-        var rngString = document.getElementById('playerID').value + "bingo_draw_";
-        var drawNumber = (parseInt(dict.rng.hasOwnProperty("bingo_draw") ? dict.rng.bingo_draw : 0))
-        
         let rngGen = new Math.seedrandom(document.getElementById('playerID').value + "bingo_draw_" + (parseInt(dict.rng.hasOwnProperty("bingo_draw") ? dict.rng.bingo_draw : 0)));
         while (draws.length < drawGoal) {
             const drawnNum = weightSelect(weights, rngGen());
@@ -122,8 +116,9 @@ function startSolver(){
     let internalCard = structuredClone(bingoCard) 
     let remaining = remainingCards(internalCard, internalDraw);
     let currentWeights = [];
-    let internalRngString = rngString;
-    let internalDrawNumber = drawNumber;
+    let internalDict = JSON.parse(document.getElementById("saveData").innerHTML);       
+    let internalRngString = document.getElementById('playerID').value + "bingo_draw_";
+    let internalDrawNumber = (parseInt(internalDict.rng.hasOwnProperty("bingo_draw") ? internalDict.rng.bingo_draw : 0));
     
     solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
     console.log(showResult[0]);
