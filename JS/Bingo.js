@@ -121,17 +121,11 @@ async function startSolver(){
     baseBoostsArray = [];
     let internalDraw = structuredClone(groundDraws);
     let internalCard = structuredClone(bingoCard);
-
-internalDraw = [];
-    
     let remaining = remainingCards(internalCard, internalDraw);
     let currentWeights = [];
     let internalDict = JSON.parse(document.getElementById("saveData").innerHTML);       
     let internalRngString = document.getElementById('playerID').value + "bingo_draw_";
     let internalDrawNumber = (parseInt(internalDict.rng.hasOwnProperty("bingo_draw") ? internalDict.rng.bingo_draw : 0));
-
-internalDrawNumber = internalDrawNumber -1 
-    
     timer5 = new Date();
     
     await solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
