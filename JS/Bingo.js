@@ -201,7 +201,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
                     for (let i = 0; i < possibleWeights.length; i++){
                         let nextWeights1 = structuredClone(currentWeights)
                         nextWeights1.push(possibleWeights[i])
-                        let remainingPossibleWeights = remainingCards(possibleWeights, [i])                        
+                        let remainingPossibleWeights = remainingCards(possibleWeights, [possibleWeights[i]])                        
                         for (let j = 0; j < remainingPossibleWeights.length; i++){
                             let nextWeights2 = structuredClone(nextWeights1)
                             nextWeights2.push(remainingPossibleWeights[j])
