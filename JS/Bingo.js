@@ -141,7 +141,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(newInternalDraw)
 
-    debugHelp()
+    debugHelp(showResult)
     
     if (maxWeightsLenght >= 8){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card));
@@ -276,7 +276,7 @@ function efficientPredictBingo(currentWeights, internalCard, internalDraw, inter
     return predictedDraws;
 }
 
-function debugHelp(){
+function debugHelp(showResult){
     if (showDebug){
         console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
     }
