@@ -173,7 +173,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     internalDrawNumber++
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(newInternalDraw)
-    if (maxWeightsLenght > 6){
+    if (maxWeightsLenght >= 6){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card)).length;
         if (currentResult > showResult[0]){
             showResult[0] = currentResult;
