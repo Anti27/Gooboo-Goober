@@ -181,17 +181,9 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
         let resultMap = structuredClone(internalCard)
 
         for (let z = 0; z < onlyImportantDraws.length; z++){
-            let checkForHit = resultMap.indexOf(onlyImportantDraws[z])
-            if (checkForHit !== -1)
-            {resultMap[z] = 0}
-        }
-
-        for (let z = 0; z < resultMap.length; z++){
-            if (resultMap[z] === 0){
-                resultMap[z] = 1;
-            } else {
-                resultMap[z] = 0;
-            }
+            let indexHit = resultMap.indexOf(onlyImportantDraws[z])
+            if (indexHit !== -1)
+            {resultMap[indexHit] = 0}
         }
         
         debugger;
