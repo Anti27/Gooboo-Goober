@@ -126,6 +126,7 @@ function startSolver(){
     console.log("Max Find: " + showResult[0]);
     console.log("Numbers: " + showResult[1]);
     console.log("Combinations: " + showResult[2]);
+    console.log("Enddraw: " + showResult[3]);
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
@@ -177,7 +178,8 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card)).length;
         if (currentResult > showResult[0]){
             showResult[0] = currentResult;
-            showResult[1] = currentWeights;
+            showResult[1] = structuredClone(currentWeights);
+            showResult[3] = structuredClone(newInternalDraw);
         }
         return;
     }
