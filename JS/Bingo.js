@@ -209,8 +209,10 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
         let antiDiagonal = resultMap[4] * resultMap[8] * resultMap[12] * resultMap[16] * resultMap[20]
 
         let bingoCount = horizontal0 + horizontal1 + horizontal2 + horizontal3 + horizontal4 + vertical0 + vertical1 + vertical2 + vertical3 + vertical4 + diagonal + antiDiagonal
-        
-        debugger;
+
+        if (bingoCount > 0){
+            debugger;
+        }
         
         return;
     }
