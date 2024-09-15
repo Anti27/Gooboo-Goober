@@ -123,7 +123,7 @@ function startSolver(){
     solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
     console.log("Max Find: " + showResult[0]);
     console.log("Numbers: " + showResult[1]);
-    console.log("Combinations: " + showResult[3]);
+    console.log("Combinations: " + showResult[2]);
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
