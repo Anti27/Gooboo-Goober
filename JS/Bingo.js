@@ -199,7 +199,7 @@ function startSolver(){
             if (i == j){
                 allPairs.push([remaining[i]])
             }else{
-                allPairs.push([remaining[i],remaining[i]])
+                allPairs.push([remaining[i],remaining[j]])
             }
             
         }
