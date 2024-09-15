@@ -186,8 +186,8 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
 
         let bingoCount = horizontal0 + horizontal1 + horizontal2 + horizontal3 + horizontal4 + vertical0 + vertical1 + vertical2 + vertical3 + vertical4 + diagonal + antiDiagonal
 
-        if (new Date() - timer5 > 20000){
-            debugger;
+        if (new Date() - timer5 > 5000){
+            await sleep(1);
             timer5 = new Date();
         }
 
@@ -201,10 +201,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             document.getElementById("bingoCount").innerText = "Count: " + showResult[4];
             document.getElementById("bingoWeights").innerText = "Weights: " + showResult[5];
             document.getElementById("bingoDraw").innerText = "Draw: " + showResult[6];
-            if (new Date() - timer5 > 5000){
-                debugger;
-                timer5 = new Date();
-            }
+            debugger;
         }
         
         return;
@@ -293,4 +290,8 @@ async function efficientPredictBingo(currentWeights, internalCard, internalDraw,
         predictedDraws.push(drawnNum + 1);
     }
     return predictedDraws;
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
