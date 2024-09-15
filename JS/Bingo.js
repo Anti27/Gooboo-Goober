@@ -145,23 +145,6 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
     internalDrawNumber++
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(newInternalDraw)
-
-    if (new Date() - timer5 > 5000){
-        debugger;
-        timer5 = new Date();
-    }
-    
-    if (showResult[2] === 1000000){
-        debugger;
-    }
-    
-    if (showResult[2] === 5000000){
-        debugger;
-    }
-
-    if (showResult[2] === 10000000){
-        debugger;
-    }
     
     if (maxWeightsLenght >= 8){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card));
@@ -203,6 +186,11 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
 
         let bingoCount = horizontal0 + horizontal1 + horizontal2 + horizontal3 + horizontal4 + vertical0 + vertical1 + vertical2 + vertical3 + vertical4 + diagonal + antiDiagonal
 
+        if (new Date() - timer5 > 20000){
+            debugger;
+            timer5 = new Date();
+        }
+
         if (bingoCount > showResult[4]){
             showResult[4] = bingoCount;
             showResult[5] = structuredClone(currentWeights);
@@ -213,6 +201,10 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             document.getElementById("bingoCount").innerText = "Count: " + showResult[4];
             document.getElementById("bingoWeights").innerText = "Weights: " + showResult[5];
             document.getElementById("bingoDraw").innerText = "Draw: " + showResult[6];
+            if (new Date() - timer5 > 5000){
+                debugger;
+                timer5 = new Date();
+            }
         }
         
         return;
