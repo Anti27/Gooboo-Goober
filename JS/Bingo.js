@@ -111,13 +111,11 @@ function remainingCards(Card, Draw) {
     return Card.filter(card => !Draw.includes(card));
 }
 
-function asyncStartSolver(){
-        setTimeout(function(){
-            startSolver();
-        }, 1);
-    }
+document.getElementById("bingoSolve").onclick=async() => {
+  await startSolver();
+};
 
-function startSolver(){
+async function startSolver(){
     let showResult = [0,0,0,0,0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
