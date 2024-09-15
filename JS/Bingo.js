@@ -129,7 +129,7 @@ function startSolver(){
             }
         }
     }
-    for (let p = 0; p < allPairs.lenght; p++){
+    for (let p = 0; p < allPairs.length; p++){
         solver(1, showResult, allPairs[p], internalCard)
     }
 }
