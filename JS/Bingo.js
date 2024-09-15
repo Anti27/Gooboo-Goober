@@ -131,7 +131,7 @@ function startSolver(){
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
-    
+    console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber)
     if (!internalCard.some(card => predictedNextDraw.includes(card))){
         return;
@@ -152,7 +152,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     let possibleWeights = remainingCards(InternalRemainingCards, currentWeights)
     
     for (let p = 0; p < maxWeightsLenght; p++){
-        if (p < currentWeights.length){
+        if (p > currentWeights.length){
             continue;
         }
         let difference = maxWeightsLenght - p;
