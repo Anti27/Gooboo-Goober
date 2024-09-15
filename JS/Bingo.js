@@ -12,6 +12,8 @@ var nextDraws = [];
 var automateBaseBoosts = false;
 var baseBoostsArray = [];
 var bingoCard = [];
+var drawNumber = 0
+var rngString = "";
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -73,6 +75,10 @@ function predictBingo() {
         else if (draws.length >= 12) { drawGoal = 17; }
 
         let predictedDraws = [];
+        
+        var rngString = document.getElementById('playerID').value + "bingo_draw_";
+        var drawNumber = (parseInt(dict.rng.hasOwnProperty("bingo_draw") ? dict.rng.bingo_draw : 0))
+        
         let rngGen = new Math.seedrandom(document.getElementById('playerID').value + "bingo_draw_" + (parseInt(dict.rng.hasOwnProperty("bingo_draw") ? dict.rng.bingo_draw : 0)));
         while (draws.length < drawGoal) {
             const drawnNum = weightSelect(weights, rngGen());
@@ -117,6 +123,9 @@ function startSolver(){
     let internalCard = structuredClone(bingoCard) 
     let remaining = remainingCards(internalCard, internalDraw);
     let allPairs = [];
+    let internalRngString = rngString;
+    let internalDrawNumber = drawNumber;
+    
     for (let i = 0; i < remaining.length; i++) {
         for (let j = 0; j < remaining.length; j++) {
             if (i < j){
@@ -130,17 +139,16 @@ function startSolver(){
         }
     }
     for (let p = 0; p < allPairs.length; p++){
-        solver(maxBingo, showResult, allPairs[p], internalCard, internalDraw)
+        solver(maxBingo, showResult, allPairs[p], internalCard, internalDraw, internalRngString, internalDrawNumber)
     }
 }
 
-function solver(maxBingo, showResult, currentWeights, internalCard, internalDraw){
-    let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw)
+function solver(maxBingo, showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber){
+    let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber)
     debugger;
-    
 }
 
-function efficientPredictBingo(currentWeights, internalCard, internalDraw) {
+function efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber) {
     let card = internalCard;
     let draws = internalDraw;
     let boostI = 0.0;
@@ -169,7 +177,8 @@ function efficientPredictBingo(currentWeights, internalCard, internalDraw) {
     else if (draws.length >= 12) { drawGoal = 17; }
 
     let predictedDraws = [];
-    let rngGen = new Math.seedrandom(document.getElementById('playerID').value + "bingo_draw_" + (parseInt(dict.rng.hasOwnProperty("bingo_draw") ? dict.rng.bingo_draw : 0)));
+    let rngGen = new Math.seedrandom(internalRngString + internalDrawNumber);
+
     while (draws.length < drawGoal) {
         const drawnNum = weightSelect(weights, rngGen());
         weights[drawnNum] = 0;
