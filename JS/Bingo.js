@@ -150,7 +150,6 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
 
     if (new Date() - timer5 > 5000){
         debugger;
-        requestAnimationFrame(moveDiv);
         timer5 = new Date();
     }
     
