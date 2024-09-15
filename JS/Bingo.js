@@ -112,8 +112,8 @@ function startSolver(){
     let showResult = [0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
-    let internalDraw = structuredClone(groundDraws) 
-    let internalCard = structuredClone(bingoCard) 
+    let internalDraw = structuredClone(groundDraws);
+    let internalCard = structuredClone(bingoCard);
     let remaining = remainingCards(internalCard, internalDraw);
     let currentWeights = [];
     let internalDict = JSON.parse(document.getElementById("saveData").innerHTML);       
@@ -126,7 +126,6 @@ function startSolver(){
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
-    console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber)
     if (!internalCard.some(card => predictedNextDraw.includes(card))){
         return;
@@ -134,7 +133,6 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     internalDrawNumber++
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(internalDraw)
-    predictedNextDraw.forEach(i => {drawsUntilNow.push(i)})
     if (maxWeightsLenght > 6){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card)).length;
         if (currentResult > showResult[0]){
