@@ -165,6 +165,9 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, newInternalDraw, internalRngString, internalDrawNumber)
     if (!newInternalDraw.some(card => predictedNextDraw.includes(card))){
+        if (predictedNextDraw.length === 0){
+            debugger;
+        }
         return;
     }
     internalDrawNumber++
