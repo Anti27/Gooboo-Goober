@@ -132,6 +132,7 @@ async function startSolver(){
     console.log("Combinations: " + showResult[2]);
     console.log("Max Find: " + showResult[0] + " Numbers: " + showResult[1] + " Enddraw: " + showResult[3]);
     console.log("Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
+    document.getElementById("bingoFinish").innerText = "Tested all Combinations!";
 }
 
 async function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
