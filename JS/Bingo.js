@@ -14,6 +14,7 @@ var baseBoostsArray = [];
 var bingoCard = [];
 var showDebug = false;
 var stopNow = false;
+var timer5 ;
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -121,6 +122,7 @@ function startSolver(){
     let internalDict = JSON.parse(document.getElementById("saveData").innerHTML);       
     let internalRngString = document.getElementById('playerID').value + "bingo_draw_";
     let internalDrawNumber = (parseInt(internalDict.rng.hasOwnProperty("bingo_draw") ? internalDict.rng.bingo_draw : 0));
+    timer5 = new Date();
     
     solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
     console.log("Combinations: " + showResult[2]);
@@ -140,6 +142,11 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(newInternalDraw)
 
+    if (new Date() - timer5 > 5000){
+        debugger;
+        timer5 = new Date();
+    }
+    
     if (showResult[2] === 1000000){
         debugger;
     }
