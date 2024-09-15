@@ -151,7 +151,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             continue;
         }
         let difference = maxWeightsLenght - p;
-        for (let x = 0; x < difference; x++){
+        for (let x = 0; x <= difference; x++){
             switch(x) {
                 case 0:
                     solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
