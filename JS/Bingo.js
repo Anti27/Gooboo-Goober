@@ -125,7 +125,7 @@ function startSolver(){
     solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
     console.log("Combinations: " + showResult[2]);
     console.log("Max Find: " + showResult[0] + " Numbers: " + showResult[1] + " Enddraw: " + showResult[3]);
-    console.log("Count: " + showResult[4] + " Weights: " + showResult[4] + " Draw: " + showResult[4]);
+    console.log("Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
@@ -196,7 +196,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             showResult[4] = bingoCount;
             showResult[5] = structuredClone(currentWeights);
             showResult[6] = structuredClone(newInternalDraw);
-            console.log("Combinations: " + showResult[2] + "Count: " + showResult[4] + " Weights: " + showResult[4] + " Draw: " + showResult[4]);
+            console.log("Combinations: " + showResult[2] + " Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
         }
         
         return;
