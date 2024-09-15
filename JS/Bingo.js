@@ -164,7 +164,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
                     possibleWeights.forEach(i => {
                         let nextWeights = structuredClone(currentWeights)
                         nextWeights.push(i)
-                        solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
+                        solver(showResult, nextWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
                     })
                     break;
                 case 2:
