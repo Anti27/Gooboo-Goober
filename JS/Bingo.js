@@ -109,7 +109,7 @@ function remainingCards(Card, Draw) {
 }
 
 function startSolver(){
-    let showResult = [0];
+    let showResult = [0,0,0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
     let internalDraw = structuredClone(groundDraws);
@@ -121,11 +121,13 @@ function startSolver(){
     let internalDrawNumber = (parseInt(internalDict.rng.hasOwnProperty("bingo_draw") ? internalDict.rng.bingo_draw : 0));
     
     solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
-    console.log(showResult[0]);
-    console.log(showResult[1]);
+    console.log("Max Find: " + showResult[0]);
+    console.log("Numbers: " + showResult[1]);
+    console.log("Combinations: " + showResult[3]);
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
+    showResult[2] += 1
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber)
     if (!internalCard.some(card => predictedNextDraw.includes(card))){
         return;
