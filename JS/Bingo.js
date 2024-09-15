@@ -209,6 +209,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             showResult[4] = bingoCount;
             showResult[5] = structuredClone(currentWeights);
             showResult[6] = structuredClone(newInternalDraw);
+            alert("Combinations: " + showResult[2] + " Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
             console.log("Combinations: " + showResult[2] + " Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
             document.getElementById("bingoCombinations").innerText = "Combinations: " + showResult[2];
             document.getElementById("bingoCount").innerText = "Count: " + showResult[4];
