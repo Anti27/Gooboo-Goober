@@ -192,11 +192,11 @@ function startSolver(){
     let remaining = remainingCards(internalCard, internalDraw);
     let allPairs = [];
     for (let i = 0; i < remaining.length; i++) {
-        for (let j = i + 1; j < remaining.length; j++) {
+        for (let j = 0; j < remaining.length; j++) {
             if (i == j){
-                allPairs.push([remainingCards[i]])
+                allPairs.push([remaining[i]])
             }else{
-                allPairs.push([remainingCards[i],remainingCards[i]])
+                allPairs.push([remaining[i],remaining[i]])
             }
             
         }
