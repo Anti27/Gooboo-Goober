@@ -111,6 +111,12 @@ function remainingCards(Card, Draw) {
     return Card.filter(card => !Draw.includes(card));
 }
 
+function asyncStartSolver(){
+        setTimeout(function(){
+            startSolver();
+        }, 1);
+    }
+
 function startSolver(){
     let showResult = [0,0,0,0,0];
     automateBaseBoosts = true;
@@ -144,6 +150,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
 
     if (new Date() - timer5 > 5000){
         debugger;
+        requestAnimationFrame(moveDiv);
         timer5 = new Date();
     }
     
