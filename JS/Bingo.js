@@ -131,31 +131,6 @@ function startSolver(){
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
     showResult[2] += 1
-    
-    if (showResult[2] === 100){
-        debugger;
-    }
-    
-    if (showResult[2] === 1000){
-        debugger;
-    }
-    
-    if (showResult[2] === 10000){
-        debugger;
-    }
-    
-    if (showResult[2] === 100000){
-        debugger;
-    }
-    
-    if (showResult[2] === 1000000){
-        debugger;
-    }
-    
-    if (showResult[2] === 10000000){
-        debugger;
-    }
-    
     let newInternalDraw = structuredClone(internalDraw);
     
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, newInternalDraw, internalRngString, internalDrawNumber)
@@ -166,11 +141,9 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
     maxWeightsLenght += 2
     let drawsUntilNow = structuredClone(newInternalDraw)
 
-    if (showDebug){
-        console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
-    }
-
-    if (maxWeightsLenght >= 6){
+    debugHelp()
+    
+    if (maxWeightsLenght >= 8){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card));
         if (currentResult.length > showResult[0]){
             showResult[0] = currentResult.length;
@@ -302,3 +275,24 @@ function efficientPredictBingo(currentWeights, internalCard, internalDraw, inter
     return predictedDraws;
 }
 
+function debugHelp(){
+    if (showDebug){
+        console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
+    }
+    
+    if (showResult[2] === 10000){
+        debugger;
+    }
+    
+    if (showResult[2] === 100000){
+        debugger;
+    }
+    
+    if (showResult[2] === 1000000){
+        debugger;
+    }
+    
+    if (showResult[2] === 10000000){
+        debugger;
+    }
+}
