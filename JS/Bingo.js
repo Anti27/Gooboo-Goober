@@ -132,6 +132,32 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
         console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
     }
     showResult[2] += 1
+    
+    if (showResult[2] === 100){
+        debugger;
+    }
+    
+    if (showResult[2] === 1000){
+        debugger;
+    }
+    
+    if (showResult[2] === 10000){
+        debugger;
+    }
+    
+    if (showResult[2] === 100000){
+        debugger;
+    }
+    
+    if (showResult[2] === 1000000){
+        debugger;
+    }
+    
+    if (showResult[2] === 10000000){
+        debugger;
+    }
+    
+    
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber)
     if (!internalCard.some(card => predictedNextDraw.includes(card))){
         return;
