@@ -187,23 +187,23 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
                     solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
                     break;
                 case 1:
-                    possibleWeights.forEach(i => {
+                    for (let i; possibleWeights.lenght; i++){
                         let nextWeights = structuredClone(currentWeights)
-                        nextWeights.push(i)
+                        nextWeights.push(possibleWeights[i])
                         solver(showResult, nextWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                    })
+                    }
                     break;
                 case 2:
-                    possibleWeights.forEach(i => {
+                    for (let i; possibleWeights.lenght; i++){
                         let nextWeights1 = structuredClone(currentWeights)
-                        nextWeights1.push(i)
+                        nextWeights1.push(possibleWeights[i])
                         let remainingPossibleWeights = remainingCards(possibleWeights, [i])                        
-                        remainingPossibleWeights.forEach(j => {
+                        for (let j; remainingPossibleWeights.lenght; i++){
                             let nextWeights2 = structuredClone(nextWeights1)
-                            nextWeights2.push(j)
+                            nextWeights2.push(remainingPossibleWeights[j])
                             solver(showResult, nextWeights2, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                        })
-                    })
+                        }
+                    }
                     break;
                 case 3:
                     break;
