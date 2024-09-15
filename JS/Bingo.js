@@ -13,6 +13,7 @@ var automateBaseBoosts = false;
 var baseBoostsArray = [];
 var bingoCard = [];
 var showDebug = false;
+var stopNow = false;
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -130,6 +131,9 @@ function startSolver(){
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
     if (showDebug){
         console.log(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght);
+    }
+    if (stopNow){
+        return;
     }
     showResult[2] += 1
     
