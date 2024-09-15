@@ -9,6 +9,8 @@ let tilts = [
 var storedDraws = [];
 var groundDraws = [];
 var nextDraws = [];
+var automateBaseBoosts = false;
+var baseBoostsArray = [];
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -37,7 +39,12 @@ function predictBingo() {
         }
         let boostI = 0.0;
         let boosts = [];
-        var baseBoosts = JSON.parse("[" + document.getElementById("bingoWeights").innerHTML + "]")
+        if (automateBaseBoosts){
+            var baseBoosts = [];
+            baseBoostsArray.forEach(i => {baseBoosts.push(i)})
+        } else {
+            var baseBoosts = JSON.parse("[" + document.getElementById("bingoWeights").innerHTML + "]")
+        }
 
         baseBoosts.forEach(i => {
             if (draws.includes(i)) { boosts.push(0) }
