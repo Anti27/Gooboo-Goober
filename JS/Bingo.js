@@ -115,37 +115,68 @@ function remainingCards(Card, Draw) {
 }
 
 function startSolver(){
-    let maxBingo = 0;
-    let showResult = [];
+    let showResult = [0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
     let internalDraw = structuredClone(groundDraws) 
     let internalCard = structuredClone(bingoCard) 
     let remaining = remainingCards(internalCard, internalDraw);
-    let allPairs = [];
+    let currentWeights = [];
     let internalRngString = rngString;
     let internalDrawNumber = drawNumber;
     
-    for (let i = 0; i < remaining.length; i++) {
-        for (let j = 0; j < remaining.length; j++) {
-            if (i < j){
-                continue;
-            }
-            if (i == j){
-                allPairs.push([remaining[i]])
-            }else{
-                allPairs.push([remaining[i],remaining[j]])
-            }
-        }
-    }
-    for (let p = 0; p < allPairs.length; p++){
-        solver(maxBingo, showResult, allPairs[p], internalCard, internalDraw, internalRngString, internalDrawNumber)
-    }
+    solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
+    alert(showResult[0])
 }
 
-function solver(maxBingo, showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber){
+function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
+    
     let predictedNextDraw = efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber)
-    debugger;
+    if (!internalCard.some(card => predictedNextDraw.includes(card))){
+        return;
+    }
+    internalDrawNumber++
+    maxWeightsLenght += 2
+    let drawsUntilNow = structuredClone(internalDraw)
+    predictedNextDraw.forEach(i => {drawsUntilNow.push(i)})
+    if (maxWeightsLenght > 6){
+        let currentResult = internalCard.filter(card => drawsUntilNow.includes(card)).length;
+        if (currentResult > showResult[0]){
+            showResult[0] = currentResult;
+            showResult[1] = currentWeights;
+        }
+        return;
+    }
+    let InternalRemainingCards = remainingCards(internalCard, drawsUntilNow)
+    let possibleWeights = remainingCards(InternalRemainingCards, currentWeights)
+    let allPossibleWeights = []
+    
+    for (let p = 0; p < maxWeightsLenght; p++){
+        if (p > currentWeights.length){
+            continue;
+        }
+        let difference = maxWeightsLenght - p;
+        for (let x = 0; x < difference; x++){
+            switch(x) {
+                case 0:
+                    solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    
+            } 
+        }
+        
+    }
 }
 
 function efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber) {
