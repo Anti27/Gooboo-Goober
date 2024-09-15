@@ -126,7 +126,8 @@ function startSolver(){
     let internalDrawNumber = drawNumber;
     
     solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
-    alert(showResult[0])
+    console.log(showResult[0]);
+    console.log(showResult[1]);
 }
 
 function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
