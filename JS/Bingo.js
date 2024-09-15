@@ -130,7 +130,7 @@ function startSolver(){
         }
     }
     for (let p = 0; p < allPairs.length; p++){
-        solver(1, showResult, allPairs[p], internalCard)
+        solver(maxBingo, showResult, allPairs[p], internalCard, internalDraw)
     }
 }
 
