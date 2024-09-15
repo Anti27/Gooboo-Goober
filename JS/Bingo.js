@@ -196,6 +196,7 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             showResult[4] = bingoCount;
             showResult[5] = structuredClone(currentWeights);
             showResult[6] = structuredClone(newInternalDraw);
+            console.log("Combinations: " + showResult[2] + "Count: " + showResult[4] + " Weights: " + showResult[4] + " Draw: " + showResult[4]);
         }
         
         return;
