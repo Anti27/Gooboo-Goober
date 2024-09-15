@@ -107,11 +107,11 @@ function weightAdd(id) {
 function buildArray(length = 0) { return Array(length).fill().map((x, i) => i); }
 
 function remainingCards(Card, Draw) {
-  return Card.filter(card => !Draw.includes(card));
+    return Card.filter(card => !Draw.includes(card));
 }
 
 function startSolver(){
-    let showResult = [0,0,0,0,0,0];
+    let showResult = [0,0,0,0,0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
     let internalDraw = structuredClone(groundDraws);
