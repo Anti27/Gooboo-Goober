@@ -186,11 +186,11 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             {resultMap[z] = 0}
         }
 
-        for (let z = 0; z < onlyImportantDraws.length; z++){
-            if (onlyImportantDraws[z] === 0){
-                onlyImportantDraws[z] = 1;
+        for (let z = 0; z < resultMap.length; z++){
+            if (resultMap[z] === 0){
+                resultMap[z] = 1;
             } else {
-                onlyImportantDraws[z] = 0;
+                resultMap[z] = 0;
             }
         }
         
