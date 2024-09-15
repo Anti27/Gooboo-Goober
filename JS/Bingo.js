@@ -160,17 +160,17 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
                 case 1:
                     possibleWeights.forEach(i => {
                         let nextWeights = structuredClone(currentWeights)
-                        nextWeights.push(i)
+                        nextWeights.push(possibleWeights[i])
                         solver(showResult, nextWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
                     })
                     break;
                 case 2:
                     possibleWeights.forEach(i => {
                         let nextWeights1 = structuredClone(currentWeights)
-                        nextWeights1.push(i)
+                        nextWeights1.push(possibleWeights[i])
                         nextWeights1.forEach(j => {
                             let nextWeights2 = structuredClone(nextWeights1)
-                            nextWeights2.push(j)
+                            nextWeights2.push(nextWeights1[j])
                             solver(showResult, nextWeights2, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
                         })
                     })
