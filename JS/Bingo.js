@@ -194,8 +194,8 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
 }
 
 function efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber) {
-    let card = internalCard;
-    let draws = internalDraw;
+    let card = structuredClone(internalCard);
+    let draws = structuredClone(internalDraw);
     let boostI = 0.0;
     let boosts = [];
     
