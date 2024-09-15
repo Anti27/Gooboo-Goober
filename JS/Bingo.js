@@ -193,7 +193,7 @@ function startSolver(){
     let allPairs = [];
     for (let i = 0; i < remaining.length; i++) {
         for (let j = i + 1; j < remaining.length; j++) {
-            allPairs.push([[remaining.[i]],[[remaining.[j]]])
+            allPairs.push([[remaining[i]],[[remaining[j]]])
         }
     }
     debugger;
