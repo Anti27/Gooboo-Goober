@@ -201,9 +201,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             document.getElementById("bingoCount").innerText = "Count: " + showResult[4];
             document.getElementById("bingoWeights").innerText = "Weights: " + showResult[5];
             document.getElementById("bingoDraw").innerText = "Draw: " + showResult[6];
-            debugger;
         }
-        
         return;
     }
     let InternalRemainingCards = remainingCards(internalCard, drawsUntilNow)
