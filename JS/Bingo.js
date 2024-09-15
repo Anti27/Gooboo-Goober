@@ -111,7 +111,7 @@ function remainingCards(Card, Draw) {
 }
 
 function startSolver(){
-    let showResult = [0,0,0];
+    let showResult = [0,0,0,0,0,0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
     let internalDraw = structuredClone(groundDraws);
@@ -183,8 +183,9 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
 
         let bingoCount = horizontal0 + horizontal1 + horizontal2 + horizontal3 + horizontal4 + vertical0 + vertical1 + vertical2 + vertical3 + vertical4 + diagonal + antiDiagonal
 
-        if (bingoCount > 0){
-            debugger;
+        if (bingoCount > showResult[4]){
+            showResult[4] = bingoCount;
+            showResult[5] = structuredClone(currentWeights);
         }
         
         return;
@@ -292,6 +293,10 @@ function debugHelp(){
         debugger;
     }
     
+    if (showResult[2] === 5000000){
+        debugger;
+    }
+
     if (showResult[2] === 10000000){
         debugger;
     }
