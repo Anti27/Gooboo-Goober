@@ -11,6 +11,7 @@ var groundDraws = [];
 var nextDraws = [];
 var automateBaseBoosts = false;
 var baseBoostsArray = [];
+var bingoCard = [];
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -20,6 +21,9 @@ function predictBingo() {
             document.getElementById("grid" + String(x + y*5 + 1)).innerHTML = dict.event.casino_bingo_card[x][y].value;
             document.getElementById("grid" + String(x + y*5 + 1)).style.backgroundColor = "#d3c5fd38";
             card.push(dict.event.casino_bingo_card[x][y].value)
+        }
+        if (!automateBaseBoosts){
+            bingoCard = structuredClone(card) 
         }
         let draws = [];
         if (dict.event.hasOwnProperty("casino_bingo_draws")) {
@@ -101,5 +105,9 @@ function weightAdd(id) {
 function buildArray(length = 0) { return Array(length).fill().map((x, i) => i); }
 
 function startSolver(){
-    alert("Working on it")
+    automateBaseBoosts = true;
+    baseBoostsArray = [];
+    let internalDraw = structuredClone(groundDraws) 
+    let internalCard = structuredClone(bingoCard) 
+    
 }
