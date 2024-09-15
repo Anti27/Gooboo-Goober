@@ -185,6 +185,30 @@ function solver(showResult, currentWeights, internalCard, internalDraw, internal
             if (indexHit !== -1)
             {resultMap[indexHit] = 0}
         }
+
+        for (let z = 0; z < resultMap.length; z++){
+            if (resultMap[z] !== 0)
+            {
+                resultMap[z] = 1
+            }
+        }
+
+        let horizontal0 = resultMap[0] * resultMap[1] * resultMap[2] * resultMap[3] * resultMap[4]
+        let horizontal1 = resultMap[5] * resultMap[6] * resultMap[7] * resultMap[8] * resultMap[9]
+        let horizontal2 = resultMap[10] * resultMap[11] * resultMap[12] * resultMap[13] * resultMap[14]
+        let horizontal3 = resultMap[15] * resultMap[16] * resultMap[17] * resultMap[18] * resultMap[19]
+        let horizontal4 = resultMap[20] * resultMap[21] * resultMap[22] * resultMap[23] * resultMap[24]
+
+        let vertical0 = resultMap[0] * resultMap[5] * resultMap[10] * resultMap[15] * resultMap[20]
+        let vertical1 = resultMap[1] * resultMap[6] * resultMap[11] * resultMap[16] * resultMap[21]
+        let vertical2 = resultMap[2] * resultMap[7] * resultMap[12] * resultMap[17] * resultMap[22]
+        let vertical3 = resultMap[3] * resultMap[8] * resultMap[13] * resultMap[18] * resultMap[23]
+        let vertical4 = resultMap[4] * resultMap[9] * resultMap[14] * resultMap[19] * resultMap[24]
+
+        let diagonal = resultMap[0] * resultMap[6] * resultMap[12] * resultMap[18] * resultMap[24]
+        let antiDiagonal = resultMap[4] * resultMap[8] * resultMap[12] * resultMap[16] * resultMap[20]
+
+        let bingoCount = horizontal0 + horizontal1 + horizontal2 + horizontal3 + horizontal4 + vertical0 + vertical1 + vertical2 + vertical3 + vertical4 + diagonal + antiDiagonal
         
         debugger;
         
