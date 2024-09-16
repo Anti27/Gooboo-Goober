@@ -14,7 +14,8 @@ var baseBoostsArray = [];
 var bingoCard = [];
 var showDebug = false;
 var stopNow = false;
-var timer5 ;
+var timer5;
+var sinceLast;
 
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
@@ -181,9 +182,10 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
         bingoCount += resultMap[4] * resultMap[8] * resultMap[12] * resultMap[16] * resultMap[20]; // Anti-diagonal
 
         if (new Date() - timer5 > 1000){
-            console.log("Combinations: " + showResult[2] + " Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6])
+            console.log("Combinations: " + showResult[2] + " Bingo: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6] + " Last Sec: " + (showResult[2] - sinceLast))
             await sleep(1);
             timer5 = new Date();
+            sinceLast = showResult[2]
         }
 
         if (bingoCount > showResult[4]){
