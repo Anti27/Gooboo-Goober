@@ -17,6 +17,8 @@ var stopNow = false;
 var timer5;
 var sinceLast;
 
+var pool = [];
+
 function predictBingo() {
     var dict = JSON.parse(document.getElementById("saveData").innerHTML);
     if (dict.hasOwnProperty("event") ? dict.event.hasOwnProperty("casino_bingo_card") ? true : false : false) {
@@ -204,9 +206,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             let processWeights = async (currentWeights, remainingWeights, depth) => {
                 if (depth === x) {
                     //await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght);
-                    requestIdleCallback(() => {
-                        solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                    });
+                    createDelayedFunction(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
                     return;
                 }
         
@@ -260,6 +260,12 @@ async function efficientPredictBingo(currentWeights, internalDraw, internalRngSt
         predictedDraws.push(drawnNum + 1);
     }
     return predictedDraws;
+}
+
+function createDelayedFunction(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght) {
+    pool.push(function(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght) {
+        await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
+    })
 }
 
 function copyArray(x){
