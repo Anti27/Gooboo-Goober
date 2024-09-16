@@ -260,7 +260,8 @@ async function efficientPredictBingo(currentWeights, internalDraw, internalRngSt
 }
 
 function copyArray(x){
-    return structuredClone(x)
+    return x.slice()
+    //return structuredClone(x)
 }
 
 function sleep(ms) {
