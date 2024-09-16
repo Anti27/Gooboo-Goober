@@ -141,7 +141,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
     showResult[2] += 1
     let newInternalDraw = structuredClone(internalDraw);
     
-    let predictedNextDraw = await efficientPredictBingo(currentWeights, internalCard, newInternalDraw, internalRngString, internalDrawNumber)
+    let predictedNextDraw = await efficientPredictBingo(currentWeights, newInternalDraw, internalRngString, internalDrawNumber)
     if (!newInternalDraw.some(card => predictedNextDraw.includes(card))){
         return;
     }
@@ -231,8 +231,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
     }
 }
 
-async function efficientPredictBingo(currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber) {
-    let card = internalCard;
+async function efficientPredictBingo(currentWeights, internalDraw, internalRngString, internalDrawNumber) {
     let draws = internalDraw;
     let boostI = 0.0;
     let boosts = [];
