@@ -170,24 +170,17 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             }
         }
 
-        let horizontal0 = resultMap[0] * resultMap[1] * resultMap[2] * resultMap[3] * resultMap[4]
-        let horizontal1 = resultMap[5] * resultMap[6] * resultMap[7] * resultMap[8] * resultMap[9]
-        let horizontal2 = resultMap[10] * resultMap[11] * resultMap[12] * resultMap[13] * resultMap[14]
-        let horizontal3 = resultMap[15] * resultMap[16] * resultMap[17] * resultMap[18] * resultMap[19]
-        let horizontal4 = resultMap[20] * resultMap[21] * resultMap[22] * resultMap[23] * resultMap[24]
+        let bingoCount = 0;
+        
+        for (let i = 0; i < 5; i++) {
+            bingoCount += resultMap[i * 5] * resultMap[i * 5 + 1] * resultMap[i * 5 + 2] * resultMap[i * 5 + 3] * resultMap[i * 5 + 4]; // Horizontal
+            bingoCount += resultMap[i] * resultMap[i + 5] * resultMap[i + 10] * resultMap[i + 15] * resultMap[i + 20]; // Vertical
+        }
+        
+        bingoCount += resultMap[0] * resultMap[6] * resultMap[12] * resultMap[18] * resultMap[24]; // Diagonal
+        bingoCount += resultMap[4] * resultMap[8] * resultMap[12] * resultMap[16] * resultMap[20]; // Anti-diagonal
 
-        let vertical0 = resultMap[0] * resultMap[5] * resultMap[10] * resultMap[15] * resultMap[20]
-        let vertical1 = resultMap[1] * resultMap[6] * resultMap[11] * resultMap[16] * resultMap[21]
-        let vertical2 = resultMap[2] * resultMap[7] * resultMap[12] * resultMap[17] * resultMap[22]
-        let vertical3 = resultMap[3] * resultMap[8] * resultMap[13] * resultMap[18] * resultMap[23]
-        let vertical4 = resultMap[4] * resultMap[9] * resultMap[14] * resultMap[19] * resultMap[24]
-
-        let diagonal = resultMap[0] * resultMap[6] * resultMap[12] * resultMap[18] * resultMap[24]
-        let antiDiagonal = resultMap[4] * resultMap[8] * resultMap[12] * resultMap[16] * resultMap[20]
-
-        let bingoCount = horizontal0 + horizontal1 + horizontal2 + horizontal3 + horizontal4 + vertical0 + vertical1 + vertical2 + vertical3 + vertical4 + diagonal + antiDiagonal
-
-        if (new Date() - timer5 > 5000){
+        if (new Date() - timer5 > 1000){
             console.log("Combinations: " + showResult[2] + " Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6])
             await sleep(1);
             timer5 = new Date();
