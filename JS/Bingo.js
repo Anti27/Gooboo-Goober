@@ -213,133 +213,24 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             continue;
         }
         let difference = maxWeightsLenght - p;
-        for (let x = 0; x <= difference; x++){
-            switch(x) {
-                case 0:
-                    await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                    break;
-                case 1:
-                    for (let i = 0; i < possibleWeights.length; i++){
-                        let nextWeights = structuredClone(currentWeights)
-                        nextWeights.push(possibleWeights[i])
-                        await solver(showResult, nextWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                    }
-                    break;
-                case 2:
-                    for (let i = 0; i < possibleWeights.length; i++){
-                        let nextWeights1 = structuredClone(currentWeights)
-                        nextWeights1.push(possibleWeights[i])
-                        let remainingPossibleWeights = remainingCards(possibleWeights, [possibleWeights[i]])                        
-                        for (let j = 0; j < remainingPossibleWeights.length; j++){
-                            let nextWeights2 = structuredClone(nextWeights1)
-                            nextWeights2.push(remainingPossibleWeights[j])
-                            await solver(showResult, nextWeights2, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                        }
-                    }
-                    break;
-                case 3:
-                    for (let i = 0; i < possibleWeights.length; i++){
-                        let nextWeights1 = structuredClone(currentWeights)
-                        nextWeights1.push(possibleWeights[i])
-                        let remainingPossibleWeights1 = remainingCards(possibleWeights, [possibleWeights[i]])
-                        for (let j = 0; j < remainingPossibleWeights1.length; j++){
-                            let nextWeights2 = structuredClone(nextWeights1)
-                            nextWeights2.push(remainingPossibleWeights1[j])
-                            let remainingPossibleWeights2 = remainingCards(remainingPossibleWeights1, [remainingPossibleWeights1[j]])
-                            for (let k = 0; k < remainingPossibleWeights2.length; k++){
-                                let nextWeights3 = structuredClone(nextWeights2)
-                                nextWeights3.push(remainingPossibleWeights2[k])
-                                await solver(showResult, nextWeights3, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                            }
-                        }
-                    }
-                    break;
-                case 4:
-                    for (let i = 0; i < possibleWeights.length; i++){
-                        let nextWeights1 = structuredClone(currentWeights)
-                        nextWeights1.push(possibleWeights[i])
-                        let remainingPossibleWeights1 = remainingCards(possibleWeights, [possibleWeights[i]])
-                        for (let j = 0; j < remainingPossibleWeights1.length; j++){
-                            let nextWeights2 = structuredClone(nextWeights1)
-                            nextWeights2.push(remainingPossibleWeights1[j])
-                            let remainingPossibleWeights2 = remainingCards(remainingPossibleWeights1, [remainingPossibleWeights1[j]])
-                            for (let k = 0; k < remainingPossibleWeights2.length; k++){
-                                let nextWeights3 = structuredClone(nextWeights2)
-                                nextWeights3.push(remainingPossibleWeights2[k])
-                                let remainingPossibleWeights3 = remainingCards(remainingPossibleWeights2, [remainingPossibleWeights2[k]])
-                                for (let l = 0; l < remainingPossibleWeights3.length; l++){
-                                    let nextWeights4 = structuredClone(nextWeights3)
-                                    nextWeights4.push(remainingPossibleWeights3[l])
-                                    await solver(showResult, nextWeights4, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case 5:
-                    for (let i = 0; i < possibleWeights.length; i++){
-                        let nextWeights1 = structuredClone(currentWeights)
-                        nextWeights1.push(possibleWeights[i])
-                        let remainingPossibleWeights1 = remainingCards(possibleWeights, [possibleWeights[i]])
-                        for (let j = 0; j < remainingPossibleWeights1.length; j++){
-                            let nextWeights2 = structuredClone(nextWeights1)
-                            nextWeights2.push(remainingPossibleWeights1[j])
-                            let remainingPossibleWeights2 = remainingCards(remainingPossibleWeights1, [remainingPossibleWeights1[j]])
-                            for (let k = 0; k < remainingPossibleWeights2.length; k++){
-                                let nextWeights3 = structuredClone(nextWeights2)
-                                nextWeights3.push(remainingPossibleWeights2[k])
-                                let remainingPossibleWeights3 = remainingCards(remainingPossibleWeights2, [remainingPossibleWeights2[k]])
-                                for (let l = 0; l < remainingPossibleWeights3.length; l++){
-                                    let nextWeights4 = structuredClone(nextWeights3)
-                                    nextWeights4.push(remainingPossibleWeights3[l])
-                                    let remainingPossibleWeights4 = remainingCards(remainingPossibleWeights3, [remainingPossibleWeights3[l]])
-                                    for (let m = 0; m < remainingPossibleWeights4.length; m++){
-                                        let nextWeights5 = structuredClone(nextWeights4)
-                                        nextWeights5.push(remainingPossibleWeights4[m])
-                                        await solver(showResult, nextWeights5, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case 6:
-                    for (let i = 0; i < possibleWeights.length; i++){
-                        let nextWeights1 = structuredClone(currentWeights)
-                        nextWeights1.push(possibleWeights[i])
-                        let remainingPossibleWeights1 = remainingCards(possibleWeights, [possibleWeights[i]])
-                        for (let j = 0; j < remainingPossibleWeights1.length; j++){
-                            let nextWeights2 = structuredClone(nextWeights1)
-                            nextWeights2.push(remainingPossibleWeights1[j])
-                            let remainingPossibleWeights2 = remainingCards(remainingPossibleWeights1, [remainingPossibleWeights1[j]])
-                            for (let k = 0; k < remainingPossibleWeights2.length; k++){
-                                let nextWeights3 = structuredClone(nextWeights2)
-                                nextWeights3.push(remainingPossibleWeights2[k])
-                                let remainingPossibleWeights3 = remainingCards(remainingPossibleWeights2, [remainingPossibleWeights2[k]])
-                                for (let l = 0; l < remainingPossibleWeights3.length; l++){
-                                    let nextWeights4 = structuredClone(nextWeights3)
-                                    nextWeights4.push(remainingPossibleWeights3[l])
-                                    let remainingPossibleWeights4 = remainingCards(remainingPossibleWeights3, [remainingPossibleWeights3[l]])
-                                    for (let m = 0; m < remainingPossibleWeights4.length; m++){
-                                        let nextWeights5 = structuredClone(nextWeights4)
-                                        nextWeights5.push(remainingPossibleWeights4[m])
-                                        let remainingPossibleWeights5 = remainingCards(remainingPossibleWeights4, [remainingPossibleWeights4[m]])
-                                        for (let n = 0; n < remainingPossibleWeights5.length; n++){
-                                            let nextWeights6 = structuredClone(nextWeights5)
-                                            nextWeights6.push(remainingPossibleWeights5[n])
-                                            await solver(showResult, nextWeights6, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                default:
-                    alert("uwu")
-            } 
-        }
+        for (let x = 0; x <= difference; x++) {
+            let processWeights = async (currentWeights, remainingWeights, depth) => {
+                if (depth === x) {
+                    await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght);
+                    return;
+                }
         
+                for (let i = 0; i < remainingWeights.length; i++) {
+                    let nextWeights = structuredClone(currentWeights);
+                    nextWeights.push(remainingWeights[i]);
+        
+                    let nextRemainingWeights = remainingCards(remainingWeights, [remainingWeights[i]]);
+                    await processWeights(nextWeights, nextRemainingWeights, depth + 1);
+                }
+            };
+            
+            await processWeights(currentWeights, possibleWeights, 0);
+        }
     }
 }
 
