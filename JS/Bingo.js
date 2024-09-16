@@ -203,7 +203,8 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
         for (let x = 0; x <= difference; x++) {
             let processWeights = async (currentWeights, remainingWeights, depth) => {
                 if (depth === x) {
-                    await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght);
+                    //await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght);
+                    solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght);
                     return;
                 }
         
