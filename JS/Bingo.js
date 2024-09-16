@@ -108,13 +108,11 @@ function weightAdd(id) {
 
 function buildArray(length = 0) { return Array(length).fill().map((x, i) => i); }
 
-function remainingCards(Card, Draw) {
-    return Card.filter(card => !Draw.includes(card));
-}
-
 document.getElementById("bingoSolve").onclick=async() => {
   await startSolver();
 };
+
+
 
 async function startSolver(){
     document.getElementById("bingoSolve").remove()
@@ -272,4 +270,8 @@ async function efficientPredictBingo(currentWeights, internalDraw, internalRngSt
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function remainingCards(Card, Draw) {
+    return Card.filter(card => !Draw.includes(card));
 }
