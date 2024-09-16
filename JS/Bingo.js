@@ -250,7 +250,6 @@ async function efficientPredictBingo(currentWeights, internalDraw, internalRngSt
         return boostIndex === -1 ? 1 : Math.floor(boostIndex / 2 + 3);
     });
 
-    // Set draw goal based on drawn numbers
     let drawGoal = 12;
     if (draws.length >= 22) { drawGoal = 25; }
     else if (draws.length >= 17) { drawGoal = 22; }
