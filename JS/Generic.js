@@ -110,7 +110,7 @@ function showNightHunt(){
 function appendImageToDiv(div, arr) {
     for (let ing in arr){
         const img = document.createElement('img');
-        img.src = '/Images/Cactus.png';
+        img.src = '/Gooboo-Goober/Images/Cactus.png';
         div.appendChild(img);
     }
 }
