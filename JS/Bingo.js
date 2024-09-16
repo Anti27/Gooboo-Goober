@@ -117,6 +117,7 @@ document.getElementById("bingoSolve").onclick=async() => {
 };
 
 async function startSolver(){
+    document.getElementById("bingoSolve").remove()
     let showResult = [0,0,0,0,0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
@@ -132,7 +133,7 @@ async function startSolver(){
     await solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, 0)
     console.log("Combinations: " + showResult[2]);
     console.log("Max Find: " + showResult[0] + " Numbers: " + showResult[1] + " Enddraw: " + showResult[3]);
-    console.log("Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
+    console.log("Bingo: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
     document.getElementById("bingoFinish").innerText = "Tested all Combinations!";
 }
 
@@ -183,6 +184,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
 
         if (new Date() - timer5 > 1000){
             console.log("Combinations: " + showResult[2] + " Bingo: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6] + " Last Sec: " + (showResult[2] - sinceLast))
+            document.getElementById("bingoFinish").innerText = "Last Sec: " + (showResult[2] - sinceLast)
             await sleep(1);
             timer5 = new Date();
             sinceLast = showResult[2]
