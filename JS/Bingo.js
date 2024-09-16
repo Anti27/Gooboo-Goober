@@ -119,8 +119,8 @@ async function startSolver(){
     let showResult = [0,0,0,0,0];
     automateBaseBoosts = true;
     baseBoostsArray = [];
-    let internalDraw = structuredClone(groundDraws);
-    let internalCard = structuredClone(bingoCard);
+    let internalDraw = copyArray(groundDraws);
+    let internalCard = copyArray(bingoCard);
     let remaining = remainingCards(internalCard, internalDraw);
     let currentWeights = [];
     let internalDict = JSON.parse(document.getElementById("saveData").innerHTML);       
@@ -137,7 +137,7 @@ async function startSolver(){
 
 async function solver(showResult, currentWeights, internalCard, internalDraw, internalRngString, internalDrawNumber, maxWeightsLenght){
     showResult[2] += 1
-    let newInternalDraw = structuredClone(internalDraw);
+    let newInternalDraw = copyArray(internalDraw);
     
     let predictedNextDraw = await efficientPredictBingo(currentWeights, newInternalDraw, internalRngString, internalDrawNumber)
     if (!newInternalDraw.some(card => predictedNextDraw.includes(card))){
@@ -145,17 +145,17 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
     }
     internalDrawNumber++
     maxWeightsLenght += 2
-    let drawsUntilNow = structuredClone(newInternalDraw)
+    let drawsUntilNow = copyArray(newInternalDraw)
     
     if (maxWeightsLenght >= 8){
         let currentResult = internalCard.filter(card => drawsUntilNow.includes(card));
         if (currentResult.length > showResult[0]){
             showResult[0] = currentResult.length;
-            showResult[1] = structuredClone(currentWeights);
-            showResult[3] = structuredClone(newInternalDraw);
+            showResult[1] = copyArray(currentWeights);
+            showResult[3] = copyArray(newInternalDraw);
         }
         let onlyImportantDraws = remainingCards(internalCard, newInternalDraw)
-        let resultMap = structuredClone(internalCard)
+        let resultMap = copyArray(internalCard)
 
         for (let z = 0; z < onlyImportantDraws.length; z++){
             let indexHit = resultMap.indexOf(onlyImportantDraws[z])
@@ -182,8 +182,8 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
 
         if (bingoCount > showResult[4]){
             showResult[4] = bingoCount;
-            showResult[5] = structuredClone(currentWeights);
-            showResult[6] = structuredClone(newInternalDraw);
+            showResult[5] = copyArray(currentWeights);
+            showResult[6] = copyArray(newInternalDraw);
             console.log("Combinations: " + showResult[2] + " Count: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6]);
             document.getElementById("bingoCombinations").innerText = "Combinations: " + showResult[2];
             document.getElementById("bingoCount").innerText = "Count: " + showResult[4];
@@ -208,7 +208,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
                 }
         
                 for (let i = 0; i < remainingWeights.length; i++) {
-                    let nextWeights = structuredClone(currentWeights);
+                    let nextWeights = copyArray(currentWeights);
                     nextWeights.push(remainingWeights[i]);
         
                     let nextRemainingWeights = remainingCards(remainingWeights, [remainingWeights[i]]);
@@ -257,6 +257,10 @@ async function efficientPredictBingo(currentWeights, internalDraw, internalRngSt
         predictedDraws.push(drawnNum + 1);
     }
     return predictedDraws;
+}
+
+function copyArray(x){
+    return structuredClone(x)
 }
 
 function sleep(ms) {
