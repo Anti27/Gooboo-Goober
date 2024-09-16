@@ -109,9 +109,9 @@ function showNightHunt(){
 }
 
 function appendImageToDiv(div, arr) {
-    for (let ing in arr){
+    for (let i in arr){
         const img = document.createElement('img');
-        img.src = '/Gooboo-Goober/Images/Cactus.png';
+        img.src = '/Gooboo-Goober/Images/' arr[i] '.png';
         div.appendChild(img);
     }
 }
