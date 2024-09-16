@@ -262,6 +262,13 @@ async function efficientPredictBingo(currentWeights, internalDraw, internalRngSt
     return predictedDraws;
 }
 
+async function calcGo(){
+	while (0 < pool.length) {
+		let currentFn = pool.pop()
+		await currentFn();
+	}
+}
+
 async function createDelayedFunction(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght) {
     pool.push(async function() {
         await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
