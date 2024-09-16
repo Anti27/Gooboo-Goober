@@ -90,8 +90,19 @@ function showNightHunt(){
     let localDict = JSON.parse(document.getElementById("saveData").innerHTML);
     let recipeList = []
     for (let key in localDict.event.nightHunt_potion){
-	    recipeList.push([key,localDict.event.nightHunt_potion[key].recipe])
+        recipeList.push([key,localDict.event.nightHunt_potion[key].recipe])
     }
-    debugger;
-	
+    var sortedRecipeList = recipeList.sort((a, b) => a[1].length - b[1].length);
+    for (let entry in sortedRecipeList){
+        appendTextToDiv(`Potion name: ${entry[0]}, made with: ${entry[1]}`);
+    }
+    
+}
+
+function appendTextToDiv(text) {
+    const div = document.getElementById('showListHere');
+    const p = document.createElement('p');
+    p.textContent = text;
+    p.style.color = "#FFF";
+    div.appendChild(p);
 }
