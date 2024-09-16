@@ -93,4 +93,5 @@ function showNightHunt(){
 	    recipeList.push(key)
     }
     debugger;
+	
 }
