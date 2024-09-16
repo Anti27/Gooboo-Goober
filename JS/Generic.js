@@ -104,6 +104,7 @@ function showNightHunt(){
         p.style.color = "#FFF";
         div.appendChild(p);
         appendImageToDiv(div, entry[1])
+        showListHere.appendChild(div);
     }
 }
 
