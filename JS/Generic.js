@@ -89,7 +89,7 @@ function openElement(evt, featureName) {
 function showNightHunt(){
     let localDict = JSON.parse(document.getElementById("saveData").innerHTML);
     let recipeList = []
-    for (let key in dict.event.nightHunt_potion){
+    for (let key in localDict.event.nightHunt_potion){
 	    recipeList.push(key)
     }
     debugger;
