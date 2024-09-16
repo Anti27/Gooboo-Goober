@@ -175,7 +175,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
         if (new Date() - timer5 > 1000){
             console.log("Combinations: " + showResult[2] + " Bingo: " + showResult[4] + " Weights: " + showResult[5] + " Draw: " + showResult[6] + " Last Sec: " + (showResult[2] - sinceLast))
             document.getElementById("bingoFinish").innerText = "Last Sec: " + (showResult[2] - sinceLast)
-            await new Promise(resolve => setTimeout(resolve, 1));
+            await sleep(1);
             timer5 = new Date();
             sinceLast = showResult[2]
         }
@@ -257,6 +257,10 @@ async function efficientPredictBingo(currentWeights, internalDraw, internalRngSt
         predictedDraws.push(drawnNum + 1);
     }
     return predictedDraws;
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function remainingCards(Card, Draw) {
