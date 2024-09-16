@@ -204,7 +204,9 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             let processWeights = async (currentWeights, remainingWeights, depth) => {
                 if (depth === x) {
                     //await solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght);
-                    requestIdleCallback(solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght));
+                    requestIdleCallback(() => {
+                        solver(showResult, currentWeights, internalCard, drawsUntilNow, internalRngString, internalDrawNumber, maxWeightsLenght)
+                    });
                     return;
                 }
         
