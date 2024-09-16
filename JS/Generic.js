@@ -93,18 +93,24 @@ function showNightHunt(){
         recipeList.push([key,localDict.event.nightHunt_potion[key].recipe])
     }
     var sortedRecipeList = recipeList.sort((a, b) => a[1].length - b[1].length);
-    document.getElementById('showListHere').innerHTML = ""
+
+    const showListHere = document.getElementById('showListHere');
+    showListHere.innerHTML = "";
     for (let i in sortedRecipeList){
-        let entry = sortedRecipeList[i];
-        appendTextToDiv(`Potion name: ${entry[0]}, made with: ${entry[1]}`);
+        const entry = sortedRecipeList[i];
+        const div = document.createElement('div');
+        const p = document.createElement('p');
+        p.textContent = `Potion name: ${entry[0]}`;
+        p.style.color = "#FFF";
+        div.appendChild(p);
+        appendImageToDiv(div, entry[1])
     }
-    
 }
 
-function appendTextToDiv(text) {
-    const div = document.getElementById('showListHere');
-    const p = document.createElement('p');
-    p.textContent = text;
-    p.style.color = "#FFF";
-    div.appendChild(p);
+function appendImageToDiv(div, arr) {
+    for (let ing in arr){
+        const img = document.createElement('img');
+        img.src = '/Images/Cactus.png';
+        div.appendChild(img);
+    }
 }
