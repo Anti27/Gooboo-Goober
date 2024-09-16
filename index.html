@@ -84,6 +84,7 @@
         <button class="tablinks" onclick="openElement(event, 'cards')">Cards</button>
         <button class="tablinks" onclick="openElement(event, 'bingo')">Bingo</button>
         <button class="tablinks" onclick="openElement(event, 'expectation')">Expectation</button>
+        <button class="tablinks" onclick="openElement(event, 'nightHunt')">NightHunt</button>
         <button class="tablinks" onclick="openElement(event, 'test')">Test</button>
     </div>
     <div style="color:#FFF; border-style: solid; border-width: 1px; border-color: black; margin: 1rem; padding: 0,2rem;">
@@ -187,6 +188,10 @@
     <div id="expectation" class="tabcontent" style="color:#FFF;">
         <input type="button" onclick="window.location.href='https://www.youtube.com/watch?v=HIcSWuKMwOw?autoplay=1';" value="please violate my expectation" />
         <input type="button" onclick="document.documentElement.style = 'background: linear-gradient(90deg, Red, Orange, Yellow, Green, Blue, Indigo,violet);'" value="i like rainbows" />
+    </div>
+    <div id="nightHunt" class="tabcontent" style="color:#FFF;">
+        <button onclick="showNightHunt()">show the recipe list</button>
+        <div id="showListHere"></div>
     </div>
     <div id="test" class="tabcontent" style="color:#FFF;">
         <div>test</div>
