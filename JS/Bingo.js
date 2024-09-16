@@ -162,21 +162,13 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             if (indexHit !== -1)
             {resultMap[indexHit] = 0}
         }
-
-        for (let z = 0; z < resultMap.length; z++){
-            if (resultMap[z] !== 0)
-            {
-                resultMap[z] = 1
-            }
-        }
+        resultMap = resultMap.map(val => val !== 0 ? 1 : 0);
 
         let bingoCount = 0;
-        
         for (let i = 0; i < 5; i++) {
             bingoCount += resultMap[i * 5] * resultMap[i * 5 + 1] * resultMap[i * 5 + 2] * resultMap[i * 5 + 3] * resultMap[i * 5 + 4]; // Horizontal
             bingoCount += resultMap[i] * resultMap[i + 5] * resultMap[i + 10] * resultMap[i + 15] * resultMap[i + 20]; // Vertical
         }
-        
         bingoCount += resultMap[0] * resultMap[6] * resultMap[12] * resultMap[18] * resultMap[24]; // Diagonal
         bingoCount += resultMap[4] * resultMap[8] * resultMap[12] * resultMap[16] * resultMap[20]; // Anti-diagonal
 
