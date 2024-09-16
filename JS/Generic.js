@@ -100,8 +100,10 @@ function showNightHunt(){
         const entry = sortedRecipeList[i];
         const div = document.createElement('div');
         const p = document.createElement('p');
-        p.textContent = `Potion name: ${entry[0]}`;
+        const text = entry[0].charAt(0).toUpperCase() + entry[0].slice(1)
+        p.textContent = `Potion name: ${text}`;
         p.style.color = "#FFF";
+        p.style.marginBottom = "2px";
         div.appendChild(p);
         appendImageToDiv(div, entry[1])
         showListHere.appendChild(div);
