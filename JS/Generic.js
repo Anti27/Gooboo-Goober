@@ -93,6 +93,7 @@ function showNightHunt(){
         recipeList.push([key,localDict.event.nightHunt_potion[key].recipe])
     }
     var sortedRecipeList = recipeList.sort((a, b) => a[1].length - b[1].length);
+    document.getElementById('showListHere').innerHTML = ""
     for (let i in sortedRecipeList){
         let entry = sortedRecipeList[i];
         appendTextToDiv(`Potion name: ${entry[0]}, made with: ${entry[1]}`);
