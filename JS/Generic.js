@@ -89,7 +89,6 @@ function openElement(evt, featureName) {
 function showCurrency(){
     const changedCurrency = JSON.parse(document.getElementById("saveData").innerHTML).event.nightHunt_changedCurrency;
     const showListHere = document.getElementById('showListHere');
-    const div = document.createElement('div');
     for (let i in changedCurrency){
         const p = document.createElement('p');
         p.textContent = `There is a ${changedCurrency[i]} at ${i}`;
