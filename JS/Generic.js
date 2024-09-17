@@ -114,6 +114,8 @@ function appendImageToDiv(div, arr) {
     for (let i in arr){
         const img = document.createElement('img');
         img.src = "/Gooboo-Goober/Images/" + arr[i] + ".png";
+        div.style.height = "auto"
+        div.style.width = "3rem"
         div.appendChild(img);
     }
 }
