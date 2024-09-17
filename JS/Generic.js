@@ -92,7 +92,7 @@ function showCurrency(){
     showListHere.innerHTML = "";
     for (let i in changedCurrency){
         const p = document.createElement('p');
-        p.textContent = `There is a ${changedCurrency[i]} at ${i}`;
+        p.textContent = `There is a ${changedCurrency[i]} at ${i}.`;
         p.style.color = "#FFF";
         p.style.marginBottom = "2px";
         showListHere.appendChild(p);
