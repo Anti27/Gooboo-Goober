@@ -84,7 +84,22 @@ function openElement(evt, featureName) {
     evt.currentTarget.className += " active";
     
     updateElement()  
-} 
+}
+
+function showCurrency(){
+    const changedCurrency = JSON.parse(document.getElementById("saveData").innerHTML).event.nightHunt_changedCurrency;
+    const mine = getAllWith(changedCurrency, "mining")
+    debugger;
+}
+
+function getAllWith(obj, name){
+    Object.keys(obj)
+        .filter(key => key.startsWith('mining'))
+        .reduce((acc, key) => {
+        acc[key] = obj[key];
+        return acc;
+    }, {});
+}
 
 function showNightHunt(){
     let localDict = JSON.parse(document.getElementById("saveData").innerHTML);
