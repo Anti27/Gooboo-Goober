@@ -88,8 +88,16 @@ function openElement(evt, featureName) {
 
 function showCurrency(){
     const changedCurrency = JSON.parse(document.getElementById("saveData").innerHTML).event.nightHunt_changedCurrency;
-    const mine = getAllWith(changedCurrency, "mining")
-    debugger;
+    const showListHere = document.getElementById('showListHere');
+    const div = document.createElement('div');
+    for (let i in changedCurrency){
+        const p = document.createElement('p');
+        p.textContent = `There is a ${changedCurrency[i]} at ${i}`;
+        p.style.color = "#FFF";
+        p.style.marginBottom = "2px";
+        showListHere.appendChild(p);
+    }
+    //const mine = getAllWith(changedCurrency, "mining")
 }
 
 function getAllWith(obj, name){
