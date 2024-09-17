@@ -93,7 +93,7 @@ function showCurrency(){
 }
 
 function getAllWith(obj, name){
-    Object.keys(obj)
+    return Object.keys(obj)
         .filter(key => key.startsWith('mining'))
         .reduce((acc, key) => {
         acc[key] = obj[key];
