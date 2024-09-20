@@ -147,7 +147,7 @@ function appendImageToDiv(div, arr) {
 }
 
 function predictNextBankingProject(){
-    var rng = new Math.seedrandom(document.getElementById('playerID').value + "bank_project_" + (parseInt(JSON.parse(document.getElementById("saveData").innerHTML).rng.hasOwnProperty("bank_project") ? JSON.parse(document.getElementById("saveData").innerHTML).rng.bank_project : 0)))
+    var rng = new Math.seedrandom(document.getElementById('playerID').value + "bank_project_" + (parseInt(JSON.parse(document.getElementById("saveData").innerHTML).rng.hasOwnProperty("bank_project") ? JSON.parse(document.getElementById("saveData").innerHTML).rng.bank_project + 1 : 0)))
     document.getElementById("bank_project").innerText = randomElem([ "expandVault", "persuadeInvestors", "improveCreditScore", "businessMarketing", "cardTournament" ], rng()) 
 }
 
