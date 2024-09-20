@@ -33,6 +33,11 @@ function inputFile() {
                 (levels.hasOwnProperty("mining_1") ? levels.mining_1 : 0)
             );
             document.getElementById("playerID").value = dict.playerId;
+            const date = localStorage.getItem(dict.playerId);
+            if (date === null || date < 604800000 + new Date().getTime()){
+            	localStorage.setItem(dict.playerId, new Date().getTime());
+                savesave();
+            }
         }
         reader.onerror = function (evt) {
             document.getElementById("div1").innerHTML = "error reading file";
@@ -144,4 +149,19 @@ function appendImageToDiv(div, arr) {
 function predictNextBankingProject(){
     var rng = new Math.seedrandom(document.getElementById('playerID').value + "bank_project_" + (parseInt(JSON.parse(document.getElementById("saveData").innerHTML).rng.hasOwnProperty("bank_project") ? JSON.parse(document.getElementById("saveData").innerHTML).rng.bank_project : 0)))
     document.getElementById("bank_project").innerText = randomElem([ "expandVault", "persuadeInvestors", "improveCreditScore", "businessMarketing", "cardTournament" ], rng()) 
+}
+
+savesave(){
+    debugsave()
+}
+
+debugsave(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://api.jsonbin.io/v3/b', true);
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.setRequestHeader('X-Access-Key', '$2a$10$zuKQdTKXEzPKJB3VWkDq1uLCmWVncwAjv9btM6zBs0MZnM7R5PDIa');
+    xhr.onload = function () {
+        console.log(this.responseText);
+    };
+    xhr.send(document.getElementById("saveData").innerHTML);
 }
