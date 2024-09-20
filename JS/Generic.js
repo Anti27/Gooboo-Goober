@@ -151,11 +151,11 @@ function predictNextBankingProject(){
     document.getElementById("bank_project").innerText = randomElem([ "expandVault", "persuadeInvestors", "improveCreditScore", "businessMarketing", "cardTournament" ], rng()) 
 }
 
-savesave(){
+function savesave(){
     debugsave()
 }
 
-debugsave(){
+function debugsave(){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://api.jsonbin.io/v3/b', true);
     xhr.setRequestHeader('Content-type', 'application/json');
