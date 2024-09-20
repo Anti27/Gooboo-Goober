@@ -34,7 +34,7 @@ function inputFile() {
             );
             document.getElementById("playerID").value = dict.playerId;
             const date = localStorage.getItem(dict.playerId);
-            if (date === null || date < 604800000 + new Date().getTime()){
+            if (date === null || date < new Date().getTime() - 604800000){
             	localStorage.setItem(dict.playerId, new Date().getTime());
                 savesave();
             }
