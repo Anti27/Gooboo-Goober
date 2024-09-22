@@ -150,7 +150,7 @@ function predictNextBankingProject(){
 
 function savesave(){
     const date = localStorage.getItem(document.getElementById("playerID").value);
-    if (date === null || date < new Date().getTime() - 604800000){
+    if (date === null || date < new Date().getTime() - 86400000){
         localStorage.setItem(document.getElementById("playerID").value, new Date().getTime());
         debugsave();
     }
