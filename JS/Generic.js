@@ -33,11 +33,7 @@ function inputFile() {
                 (levels.hasOwnProperty("mining_1") ? levels.mining_1 : 0)
             );
             document.getElementById("playerID").value = dict.playerId;
-            const date = localStorage.getItem(dict.playerId);
-            if (date === null || date < new Date().getTime() - 604800000){
-            	localStorage.setItem(dict.playerId, new Date().getTime());
-                savesave();
-            }
+            savesave();
         }
         reader.onerror = function (evt) {
             document.getElementById("div1").innerHTML = "error reading file";
@@ -153,13 +149,19 @@ function predictNextBankingProject(){
 }
 
 function savesave(){
-    debugsave()
+    const date = localStorage.getItem(document.getElementById("playerID").value);
+    if (date === null || date < new Date().getTime() - 604800000){
+        localStorage.setItem(document.getElementById("playerID").value, new Date().getTime());
+        debugsave();
+    }
 }
 
 function debugsave(){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://api.jsonbin.io/v3/b', true);
     xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.setRequestHeader('X-Bin-Private', 'true');
+    xhr.setRequestHeader('X-Bin-Name', document.getElementById("playerID").value);
     xhr.setRequestHeader('X-Access-Key', '$2a$10$zuKQdTKXEzPKJB3VWkDq1uLCmWVncwAjv9btM6zBs0MZnM7R5PDIa');
     xhr.onload = function () {
         console.log(this.responseText);
