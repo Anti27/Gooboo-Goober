@@ -1,3 +1,9 @@
+function loadWelcome(){
+    fetch('honorable/welcome/welcome.html')
+         .then(response => response.text())
+         .then(data => document.getElementById('loadWelcome').innerHTML = data); 
+}
+
 function updateElement() {
     if (document.getElementById("saveData").innerText.length > 10){
         let data = JSON.parse(document.getElementById("saveData").innerHTML);
