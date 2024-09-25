@@ -1,8 +1,7 @@
-function loadWelcome(){
-    fetch('honorable/welcome/welcome.html?' + new Date().getTime())
-         .then(response => response.text())
-         .then(data => document.getElementById('loadWelcome').innerHTML = data); 
-}
+function loadPage(pageName) {
+            const iframeContainer = document.getElementById('iframecontainer');
+            iframeContainer.innerHTML = `<iframe src="${pageName}/${pageName}.html" loading="lazy"></iframe>`;
+        }
 
 function updateElement() {
     if (document.getElementById("saveData").innerText.length > 10){
