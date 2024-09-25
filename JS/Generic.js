@@ -1,5 +1,5 @@
 function loadWelcome(){
-    fetch('honorable/welcome/welcome.html')
+    fetch('honorable/welcome/welcome.html?' + new Date().getTime())
          .then(response => response.text())
          .then(data => document.getElementById('loadWelcome').innerHTML = data); 
 }
