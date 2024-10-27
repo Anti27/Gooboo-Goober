@@ -202,7 +202,7 @@ async function solver(showResult, currentWeights, internalCard, internalDraw, in
             continue;
         }
         //let difference = maxWeightsLenght - p;
-	let difference = Math.min(maxWeightsLenght - p, 4);
+	let difference = Math.min(maxWeightsLenght - p, 3);
         for (let x = 0; x <= difference; x++) {
             let processWeights = async (currentWeights, remainingWeights, depth) => {
                 if (depth === x) {
